@@ -2,64 +2,52 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>أمازون جازان - الرئيسية</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
         <div class="nav-main">
-            <div class="logo" onclick="location.href='index.html'">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon">
-            </div>
+            <div class="logo" onclick="location.href='index.html'"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg"></div>
             <div class="search-container">
-                <input type="text" id="searchInput" placeholder="ابحث عن آيفون 16، كتب، إلكترونيات...">
+                <input type="text" id="searchInput" placeholder="بحث في أمازون...">
                 <button class="search-btn" onclick="performSearch()">🔍</button>
             </div>
-            <div class="user-nav" onclick="handleLoginClick()">
-                <small>مرحباً، <span id="userName">حسام</span></small>
-                <div style="font-weight: bold;">الحساب والقوائم</div>
+            <div class="user-nav" onclick="location.href='login.html'">
+                <small>مرحباً حسام</small><div style="font-weight:bold">الحساب والقوائم</div>
             </div>
         </div>
         <nav class="nav-links">
-            <a href="index.html">الكل</a>
-            <a href="departments.html">الأقسام</a>
-            <a href="media.html">الوسائط (آيفون 16)</a>
-            <a href="basket.html">السلة</a>
-            <a href="contact.html">اتصل بنا</a>
-            <a href="social.html">التواصل الاجتماعي</a>
+            <a href="index.html">الكل</a><a href="departments.html">الأقسام</a><a href="media.html">الوسائط</a><a href="basket.html">السلة</a><a href="contact.html">اتصل بنا</a><a href="social.html">التواصل</a>
         </nav>
     </header>
 
     <div class="container">
         <div class="dept-quick-nav">
-            <div class="dept-card" onclick="filter('كتب')"><h3>الكتب</h3><p>تصفح الكل</p></div>
-            <div class="dept-card" onclick="filter('هواتف')"><h3>الهواتف</h3><p>تصفح الكل</p></div>
-            <div class="dept-card" onclick="filter('ألعاب')"><h3>الألعاب</h3><p>تصفح الكل</p></div>
-            <div class="dept-card" onclick="filter('إلكترونيات')"><h3>الإلكترونيات</h3><p>تصفح الكل</p></div>
+            <div class="dept-card" onclick="filter('كتب')"><h3>الكتب</h3><p>تصفح الآن</p></div>
+            <div class="dept-card" onclick="filter('هواتف')"><h3>الهواتف</h3><p>تصفح الآن</p></div>
+            <div class="dept-card" onclick="filter('ألعاب')"><h3>الألعاب</h3><p>تصفح الآن</p></div>
+            <div class="dept-card" onclick="filter('إلكترونيات')"><h3>الإلكترونيات</h3><p>تصفح الآن</p></div>
         </div>
 
-        <h2 id="sectionTitle" class="section-title">أحدث العروض المختارة</h2>
+        <h2 id="sectionTitle">أحدث المنتجات</h2>
         <div class="product-grid" id="productGrid"></div>
 
-        <div class="testimonial-slider-v2">
-            <h2>ماذا يقول عملاؤنا؟</h2>
-            <div class="slider-content">
-                <div id="reviewBox" class="active-review">"جاري تحميل التقييمات..."</div>
-                <div id="reviewerBox" class="active-reviewer"></div>
-            </div>
+        <div class="testimonial-slider">
+            <div id="reviewBox">"تحميل التقييمات..."</div>
+            <div id="reviewerBox"></div>
         </div>
     </div>
 
     <footer class="amazon-footer">
-        <div class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">العودة إلى الأعلى</div>
+        <div class="back-to-top" onclick="window.scrollTo(0,0)">العودة إلى الأعلى</div>
         <div class="footer-cols">
-            <div><h4>تعرف علينا</h4><ul><li>عن أمازون</li><li>وظائف</li></ul></div>
-            <div><h4>كن شريكاً معنا</h4><ul><li>البيع على أمازون</li><li>التسويق</li></ul></div>
-            <div><h4>دعنا نساعدك</h4><ul><li>حسابك</li><li>سياسة الإرجاع</li></ul></div>
-            <div><h4>تواصل معنا</h4><ul><li>📍 جازان</li><li>📞 8001234567</li></ul></div>
+            <div><h4>تعرف علينا</h4><ul><li>نبذة عن أمازون</li><li>وظائف</li></ul></div>
+            <div><h4>كن شريكاً</h4><ul><li>البيع على أمازون</li><li>التسويق</li></ul></div>
+            <div><h4>ساعدنا</h4><ul><li>تتبع الطرود</li><li>سياسة الإرجاع</li></ul></div>
+            <div><h4>تواصل</h4><ul><li>📍 جازان</li><li>📧 support@amazon.com</li></ul></div>
         </div>
-        <div class="footer-bottom"><p>© 2026، أمازون جازان - تصميم الطالب حسام</p></div>
+        <div class="footer-bottom"><p>© 2026، أمازون جازان - تصميم حسام</p></div>
     </footer>
 
     <script>
@@ -67,8 +55,8 @@
         const cats = ["كتب", "هواتف", "ألعاب", "إلكترونيات"];
         for(let i=0; i<50; i++) {
             products.push({
-                name: (i % 2 === 0 ? "آيفون 16 برو " : "جهاز ذكي ") + (i+1),
-                price: Math.floor(Math.random() * 5000) + 100,
+                name: (i % 2 === 0 ? "آيفون 16 برو " : "منتج مميز ") + (i+1),
+                price: Math.floor(Math.random() * 4000) + 100,
                 cat: cats[i % cats.length],
                 img: `https://picsum.photos/seed/${i+100}/300/300`
             });
@@ -89,29 +77,28 @@
         }
 
         function performSearch() {
-            const query = document.getElementById('searchInput').value.toLowerCase();
-            const filtered = products.filter(p => p.name.toLowerCase().includes(query));
-            render(filtered);
+            const q = document.getElementById('searchInput').value.toLowerCase();
+            render(products.filter(p => p.name.toLowerCase().includes(q)));
         }
 
-        function handleLoginClick() {
-            if(localStorage.getItem('isLoggedIn')) { alert('أنت مسجل دخولك بالفعل!'); } 
-            else { location.href = 'login.html'; }
+        function filter(c) {
+            render(products.filter(p => p.cat === c));
+            document.getElementById('sectionTitle').innerText = "قسم: " + c;
         }
 
         const reviews = [
-            { text: "أفضل متجر إلكتروني في جازان، التوصيل سريع جداً.", user: "أحمد المجرشي" },
-            { text: "آيفون 16 وصلني مغلفاً بشكل ممتاز وبسعر منافس.", user: "يحيى الفيفي" },
-            { text: "الموقع سهل الاستخدام والبحث فيه ذكي جداً.", user: "فيصل الحربي" }
+            { t: "أفضل تجربة شراء في جازان، التوصيل سريع جداً.", n: "أحمد المجرشي" },
+            { t: "آيفون 16 وصلني مغلفاً بشكل ممتاز وبسعر منافس.", n: "سارة الفيفي" },
+            { t: "البحث في الموقع ذكي جداً والأقسام مرتبة.", n: "فيصل الحربي" }
         ];
         let rIdx = 0;
-        function rotateReview() {
-            document.getElementById('reviewBox').innerText = `"${reviews[rIdx].text}"`;
-            document.getElementById('reviewerBox').innerText = `- ${reviews[rIdx].user}`;
+        function rotate() {
+            document.getElementById('reviewBox').innerText = `"${reviews[rIdx].t}"`;
+            document.getElementById('reviewerBox').innerText = `- ${reviews[rIdx].n}`;
             rIdx = (rIdx + 1) % reviews.length;
         }
-        setInterval(rotateReview, 3000);
-        rotateReview();
+        setInterval(rotate, 3000);
+        rotate();
         render(products);
     </script>
 </body>
