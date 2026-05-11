@@ -16,12 +16,9 @@
     <header>
         <div class="nav-main"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" width="100" onclick="location.href='index.html'"></div>
     </header>
-
     <div class="container">
-        <div class="details-wrapper" id="details-content">
-            </div>
+        <div class="details-wrapper" id="details-content"></div>
     </div>
-
     <script>
         const p = JSON.parse(localStorage.getItem('selectedProduct'));
         if(p) {
@@ -35,8 +32,7 @@
                     <h3>وصف المنتج:</h3>
                     <p class="desc">${p.desc}</p>
                     <button class="btn-amazon" style="width: 200px;" onclick="location.href='basket.html'">إضافة إلى السلة</button>
-                </div>
-            `;
+                </div>`;
         }
     </script>
 </body>
