@@ -7,31 +7,28 @@
 <body style="background: white; text-align: center; padding-top: 60px;">
     <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" width="130" style="cursor: pointer;" onclick="location.href='index.html'">
     
-    <div id="loginCard" style="width: 360px; border: 1px solid #ddd; padding: 35px; margin: 30px auto; border-radius: 8px; text-align: right;">
-        <h2 id="formHeader" style="font-weight: 500; margin-bottom: 20px;">تسجيل الدخول</h2>
-        <div id="inputs">
-            <label style="font-size: 13px; font-weight: bold;">البريد الإلكتروني</label>
-            <input type="email" id="email" style="width: 100%; padding: 10px; margin: 10px 0 20px 0; border: 1px solid #888; border-radius: 3px;">
-        </div>
-        <button class="btn-amazon" onclick="process()">استمرار</button>
-        <p style="font-size: 12px; margin-top: 25px; color: #555;">بالاستمرار، فأنت توافق على شروط استخدام أمازون جازان.</p>
+    <div id="loginBox" style="width: 360px; border: 1px solid #ddd; padding: 35px; margin: 30px auto; border-radius: 8px; text-align: right;">
+        <h2 id="title">تسجيل الدخول</h2>
+        <input type="email" id="email" placeholder="البريد الإلكتروني" style="width: 100%; padding: 10px; margin: 15px 0; border: 1px solid #888; border-radius: 3px;">
+        <button class="btn-amazon" onclick="login()">استمرار</button>
+        <p style="font-size: 12px; margin-top: 20px;">بالاستمرار، أنت توافق على شروط أمازون جازان.</p>
     </div>
 
-    <div id="registerPart">
-        <p style="color: #767676; font-size: 12px;">هل أنت جديد في أمازون؟</p>
-        <button onclick="toggleRegister()" style="width: 360px; padding: 10px; margin-top: 15px; border: 1px solid #adb1b8; background: #f0f2f2; border-radius: 3px; cursor: pointer;">أنشئ حسابك الجديد في أمازون</button>
+    <div id="regSec">
+        <p style="color: #767676; font-size: 12px;">جديد في أمازون؟</p>
+        <button onclick="showReg()" style="width: 360px; padding: 8px; margin-top: 10px; border: 1px solid #adb1b8; background: #e7e9ec; border-radius: 3px; cursor: pointer;">أنشئ حسابك الجديد</button>
     </div>
 
     <script>
-        function process() {
+        function login() {
             localStorage.setItem('isLoggedIn', 'true');
-            alert('تمت العملية بنجاح! مرحباً بك يا حسام.');
+            alert('أهلاً بك يا حسام! تم تسجيل الدخول.');
             location.href = 'index.html';
         }
-        function toggleRegister() {
-            document.getElementById('formHeader').innerText = "إنشاء حساب";
-            document.getElementById('inputs').innerHTML += '<label style="font-size: 13px; font-weight: bold;">كلمة المرور</label><input type="password" style="width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #888; border-radius: 3px;">';
-            document.getElementById('registerPart').style.display = 'none';
+        function showReg() {
+            document.getElementById('title').innerText = "إنشاء حساب جديد";
+            document.getElementById('regSec').style.display = 'none';
+            alert('يمكنك الآن إدخال بيانات حسابك الجديد.');
         }
     </script>
 </body>
