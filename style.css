@@ -1,33 +1,32 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
-:root {
-    --amazon-navy: #131921;
-    --amazon-squid: #232f3e;
-    --amazon-orange: #febd69;
-    --amazon-bg: #eaeded;
-}
+:root { --navy: #131921; --squid: #232f3e; --orange: #febd69; }
+body { font-family: 'Segoe UI', Tahoma, sans-serif; background: #eaeded; direction: rtl; }
 
-body { font-family: 'Segoe UI', sans-serif; background-color: var(--amazon-bg); direction: rtl; }
-
-header { background-color: var(--amazon-navy); color: white; width: 100%; }
-.nav-main { display: flex; align-items: center; padding: 10px 3%; gap: 20px; height: 80px; }
-.logo img { width: 110px; cursor: pointer; }
-
-.search-container { display: flex; flex: 1; height: 45px; }
-.search-container input { flex: 1; border: none; border-radius: 0 6px 6px 0; padding: 0 15px; outline: none; }
-.search-btn { background: var(--amazon-orange); border: none; width: 55px; border-radius: 6px 0 0 6px; cursor: pointer; font-size: 20px; }
-
-.nav-links { background-color: var(--amazon-squid); padding: 12px 3%; display: flex; gap: 30px; }
-.nav-links a { color: white; text-decoration: none; font-size: 15px; font-weight: bold; }
+header { background: var(--navy); color: white; width: 100%; }
+.nav-main { display: flex; align-items: center; padding: 10px 3%; gap: 20px; height: 75px; }
+.logo img { width: 100px; cursor: pointer; }
+.search-container { display: flex; flex: 1; height: 40px; }
+.search-container input { flex: 1; border: none; border-radius: 0 4px 4px 0; padding: 15px; outline: none; }
+.search-btn { background: var(--orange); border: none; width: 50px; border-radius: 4px 0 0 4px; cursor: pointer; }
+.nav-links { background: var(--squid); padding: 12px 3%; display: flex; gap: 30px; }
+.nav-links a { color: white; text-decoration: none; font-weight: bold; }
 
 .container { width: 95%; max-width: 1300px; margin: 20px auto; min-height: 500px; }
 .category-section { margin-bottom: 40px; }
-.section-title { margin-bottom: 20px; border-right: 5px solid var(--amazon-orange); padding-right: 15px; font-size: 1.6rem; }
-
+.section-title { margin-bottom: 20px; border-right: 5px solid var(--orange); padding-right: 15px; }
 .product-grid-two-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; }
-.product-card { background: white; padding: 20px; border: 1px solid #ddd; border-radius: 12px; text-align: center; }
-.product-card img { width: 100%; height: 250px; object-fit: contain; }
+.product-card { background: white; padding: 20px; border-radius: 12px; border: 1px solid #ddd; text-align: center; }
+.product-card img { width: 100%; height: 230px; object-fit: contain; }
 .price { font-size: 24px; font-weight: bold; color: #B12704; margin: 10px 0; }
 .btn-amazon { background: #ffd814; border: 1px solid #fcd200; border-radius: 20px; padding: 12px; width: 100%; cursor: pointer; font-weight: bold; }
 
-.testimonial-section { background: white; margin: 40px 0; padding: 40px; text-align: center; border: 1px solid #ddd; border-radius: 12px; }
-.amazon-footer { background-color: var(--amazon-squid); color: white; padding: 30px; text-align: center; margin-top: 50px; }
+/* الفوتر الضخم المصلح */
+.amazon-footer { background: var(--squid); color: white; padding: 50px 0 20px 0; margin-top: 60px; }
+.footer-content { display: flex; justify-content: space-around; max-width: 1200px; margin: 0 auto; flex-wrap: wrap; text-align: right; }
+.footer-column { margin: 20px; min-width: 250px; }
+.footer-column h3 { margin-bottom: 20px; color: var(--orange); border-bottom: 1px solid #444; padding-bottom: 10px; }
+.footer-column ul { list-style: none; }
+.footer-column ul li { margin-bottom: 12px; font-size: 14px; }
+.footer-column a { color: #ddd; text-decoration: none; }
+.footer-column a:hover { color: white; text-decoration: underline; }
+.footer-bottom { text-align: center; border-top: 1px solid #444; padding-top: 30px; margin-top: 30px; font-size: 13px; color: #aaa; }
