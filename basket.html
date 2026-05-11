@@ -7,17 +7,18 @@
 </head>
 <body>
     <header>
-        <div class="nav-main"><div class="logo" onclick="location.href='index.html'"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg"></div></div>
+        <div class="nav-main"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" width="100" onclick="location.href='index.html'"></div>
     </header>
 
     <div class="container" style="display: grid; grid-template-columns: 3fr 1fr; gap: 20px;">
-        <div style="background: white; padding: 20px; border-radius: 8px; border: 1px solid #ddd;">
+        <div style="background: white; padding: 25px; border-radius: 8px; border: 1px solid #ddd;">
             <h2>عربة التسوق</h2>
             <div id="cartContainer"></div>
         </div>
-        <div style="background: white; padding: 20px; border-radius: 8px; border: 1px solid #ddd; height: fit-content;">
-            <p>المجموع الحقيقي: <br><b style="font-size:24px; color:#B12704;" id="totalReal">0</b> ريال</p>
-            <button class="btn-amazon" onclick="alert('شكراً لطلبك!')">إتمام الدفع</button>
+        <div style="background: white; padding: 25px; border-radius: 8px; border: 1px solid #ddd; height: fit-content;">
+            <p style="font-size: 18px;">المجموع الحقيقي: <br>
+            <b style="font-size:26px; color:#B12704;" id="totalReal">0</b> ريال</p>
+            <button class="btn-amazon" style="margin-top:20px;" onclick="alert('تم تأكيد الطلب!'); localStorage.removeItem('cart'); location.href='index.html';">تأكيد الشراء والدفع</button>
         </div>
     </div>
 
@@ -35,14 +36,14 @@
 
             container.innerHTML = cart.map((item, i) => {
                 sum += item.price;
-                return `<div style="display:flex; gap:15px; padding:15px; border-bottom:1px solid #eee;">
-                    <img src="${item.img}" width="80">
-                    <div style="flex:1;"><h4>${item.name}</h4><button onclick="del(${i})">حذف</button></div>
-                    <b>${item.price} ريال</b>
+                return `<div style="display:flex; gap:20px; padding:20px 0; border-bottom:1px solid #eee; align-items:center;">
+                    <img src="${item.img}" width="100">
+                    <div style="flex:1;"><h3>${item.name}</h3><button onclick="del(${i})">حذف</button></div>
+                    <div style="font-weight:bold;">${item.price} ريال</div>
                 </div>`;
             }).join('');
 
-            document.getElementById('totalReal').innerText = sum;
+            document.getElementById('totalReal').innerText = sum.toLocaleString();
         }
         function del(i) {
             let cart = JSON.parse(localStorage.getItem('cart'));
