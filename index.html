@@ -2,13 +2,13 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <title>Amazon - Home</title>
+    <title>Amazon Clone</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
-        <h2>Amazon Clone - Jazan University</h2>
-        <nav>
+        <img src="https://pngimg.com/uploads/amazon/amazon_PNG11.png" alt="Amazon Logo" style="width: 100px; vertical-align: middle;">
+        <nav style="display: inline-block; margin-right: 20px;">
             <a href="index.html">الرئيسية</a>
             <a href="departments.html">الأقسام</a>
             <a href="media.html">الوسائط</a>
@@ -20,11 +20,20 @@
     </header>
 
     <div class="container">
-        <h1>مرحباً بك في مشروع أمازون</h1>
-        <div class="card">
-            <h3>منتج مميز</h3>
-            <p>اكتشف أفضل العروض اليوم حصرياً لطلاب جامعة جازان.</p>
-            <button>تسوق الآن</button>
+        <h1>عروض اليوم</h1>
+        <div style="display: flex; gap: 20px;">
+            <div class="card" style="flex: 1; text-align: center;">
+                <img src="https://m.media-amazon.com/images/I/719f6XJj88L._AC_SL1500_.jpg" style="width: 150px;">
+                <h3>سماعة ألعاب</h3>
+                <p>150 ريال</p>
+                <button onclick="location.href='basket.html'">أضف إلى السلة</button>
+            </div>
+            <div class="card" style="flex: 1; text-align: center;">
+                <img src="https://m.media-amazon.com/images/I/61mZToYv6XL._AC_SL1000_.jpg" style="width: 150px;">
+                <h3>ماوس لاسلكي</h3>
+                <p>80 ريال</p>
+                <button onclick="location.href='basket.html'">أضف إلى السلة</button>
+            </div>
         </div>
     </div>
 </body>
