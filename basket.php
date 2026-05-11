@@ -1,9 +1,0 @@
-<?php include 'header.php'; ?>
-<link rel="stylesheet" href="style.css">
-<div class="container">
-    <h2>Your Shopping Basket</h2>
-    <div class="card">
-        <p>Your basket is currently empty.</p>
-        <a href="index.php">Go back to shopping</a>
-    </div>
-</div>
