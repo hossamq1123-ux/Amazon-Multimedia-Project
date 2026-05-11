@@ -2,13 +2,18 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <title>Amazon Clone</title>
+    <title>Amazon Clone - Jazan University</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; padding: 20px; }
+        .product-card { background: white; padding: 15px; border-radius: 5px; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .product-card img { width: 100%; height: 150px; object-fit: contain; }
+    </style>
 </head>
 <body>
     <header>
-        <img src="https://pngimg.com/uploads/amazon/amazon_PNG11.png" alt="Amazon Logo" style="width: 100px; vertical-align: middle;">
-        <nav style="display: inline-block; margin-right: 20px;">
+        <img src="https://pngimg.com/uploads/amazon/amazon_PNG11.png" alt="Amazon" style="width: 80px;">
+        <nav>
             <a href="index.html">الرئيسية</a>
             <a href="departments.html">الأقسام</a>
             <a href="media.html">الوسائط</a>
@@ -20,19 +25,31 @@
     </header>
 
     <div class="container">
-        <h1>عروض اليوم</h1>
-        <div style="display: flex; gap: 20px;">
-            <div class="card" style="flex: 1; text-align: center;">
-                <img src="https://m.media-amazon.com/images/I/719f6XJj88L._AC_SL1500_.jpg" style="width: 150px;">
-                <h3>سماعة ألعاب</h3>
-                <p>150 ريال</p>
-                <button onclick="location.href='basket.html'">أضف إلى السلة</button>
+        <h2>بناءً على عربة التسوق الخاصة بك</h2>
+        <div class="product-grid">
+            <div class="product-card">
+                <img src="https://m.media-amazon.com/images/I/61mZToYv6XL._AC_SL1000_.jpg" alt="سماعات">
+                <h4>سماعات لاسلكية</h4>
+                <p>99 ريال</p>
+                <button onclick="location.href='basket.html'">أضف للسلة</button>
             </div>
-            <div class="card" style="flex: 1; text-align: center;">
-                <img src="https://m.media-amazon.com/images/I/61mZToYv6XL._AC_SL1000_.jpg" style="width: 150px;">
-                <h3>ماوس لاسلكي</h3>
-                <p>80 ريال</p>
-                <button onclick="location.href='basket.html'">أضف إلى السلة</button>
+            <div class="product-card">
+                <img src="https://m.media-amazon.com/images/I/619f6S9-v6L._AC_SL1500_.jpg" alt="جوال">
+                <h4>آيفون 16 برو</h4>
+                <p>4,299 ريال</p>
+                <button onclick="location.href='basket.html'">أضف للسلة</button>
+            </div>
+            <div class="product-card">
+                <img src="https://m.media-amazon.com/images/I/719f6XJj88L._AC_SL1500_.jpg" alt="كاميرا">
+                <h4>كاميرا رقمية</h4>
+                <p>1,200 ريال</p>
+                <button onclick="location.href='basket.html'">أضف للسلة</button>
+            </div>
+            <div class="product-card">
+                <img src="https://m.media-amazon.com/images/I/810K7N+z0dL._AC_SL1500_.jpg" alt="ألعاب">
+                <h4>يد تحكم ألعاب</h4>
+                <p>250 ريال</p>
+                <button onclick="location.href='basket.html'">أضف للسلة</button>
             </div>
         </div>
     </div>
