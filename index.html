@@ -9,16 +9,21 @@
 <body>
     <header>
         <div class="nav-main">
-            <div class="logo" onclick="location.href='index.html'"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg"></div>
+            <div class="logo" onclick="location.href='index.html'">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon Logo">
+            </div>
             <div class="search-container">
-                <input type="text" placeholder="ابحث عن آيفون، كتب، ألعاب...">
+                <input type="text" id="searchInput" placeholder="ابحث في أمازون جازان...">
                 <button class="search-btn">🔍</button>
             </div>
-            <div class="user-nav"><small>مرحباً، حسام</small></div>
+            <div class="user-nav">
+                <small>مرحباً، حسام</small>
+                <div style="font-weight: bold;">الحساب والقوائم</div>
+            </div>
         </div>
         <nav class="nav-links">
             <a href="index.html">الرئيسية</a>
-            <a href="media.html">الوسائط (الفيديو)</a>
+            <a href="media.html">الوسائط والإعلانات</a>
             <a href="basket.html">السلة</a>
             <a href="social.html">تواصل معنا</a>
         </nav>
@@ -32,28 +37,42 @@
         <div class="footer-content">
             <div class="footer-column">
                 <h3>الدعم الفني</h3>
-                <ul><li><a href="#">تتبع الشحنات</a></li><li><a href="#">فتح تذكرة دعم</a></li></ul>
+                <ul>
+                    <li><a href="#">مركز المساعدة</a></li>
+                    <li><a href="#">تتبع الشحنات</a></li>
+                    <li><a href="#">فتح تذكرة دعم</a></li>
+                </ul>
             </div>
             <div class="footer-column">
                 <h3>اتصل بنا</h3>
-                <ul><li>الهاتف: 920001234</li><li>واتساب: +966500000000</li></ul>
+                <ul>
+                    <li>البريد: support@jazan-amazon.sa</li>
+                    <li>الهاتف: 920001234</li>
+                    <li>واتساب: +966500000000</li>
+                </ul>
             </div>
             <div class="footer-column">
-                <h3>حسابي</h3>
-                <ul><li><a href="basket.html">عربة التسوق</a></li><li><a href="#">طلباتي</a></li></ul>
+                <h3>روابط سريعة</h3>
+                <ul>
+                    <li><a href="#">سياسة الإرجاع</a></li>
+                    <li><a href="#">الشحن والتوصيل</a></li>
+                    <li><a href="basket.html">عربة التسوق</a></li>
+                </ul>
             </div>
         </div>
-        <div class="footer-bottom">© 2026، أمازون جازان - مشروع حسام - جامعة جازان</div>
+        <div class="footer-bottom">
+            <p>© 2026، أمازون جازان - مشروع الطالب حسام - جامعة جازان</p>
+        </div>
     </footer>
 
     <script>
-        // تم تحديث الروابط لضمان ظهور الصور 100%
+        // قاعدة بيانات المنتجات الثابتة مع روابط صور مستقرة
         const productsDB = [
-            { id: 1, cat: "الكتب", name: "كتاب أساسيات PHP", price: 120, img: "https://www.w3schools.com/images/w3lynx_250.png" }, // رابط بديل مستقر
-            { id: 2, cat: "الكتب", name: "رواية عالم صوفي", price: 65, img: "https://edit.org/images/cat/book-covers-big-2019101610.jpg" },
-            { id: 3, cat: "الهواتف", name: "iPhone 16 Pro Max", price: 5699, img: "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-16-pro-finish-select-202409-6-9inch-naturaltitanium?wid=5000&hei=5000&fmt=jpeg" },
-            { id: 4, cat: "الهواتف", name: "Samsung Galaxy S24", price: 4499, img: "https://m.media-amazon.com/images/I/71Xm6zS-63L.jpg" },
-            { id: 5, cat: "الألعاب", name: "Sony PlayStation 5", price: 2149, img: "https://m.media-amazon.com/images/I/5105Xzko79L.jpg" }
+            { id: 1, cat: "الكتب", name: "كتاب أساسيات PHP", price: 120, img: "https://m.media-amazon.com/images/I/51E6v8vKstL.jpg" },
+            { id: 2, cat: "الكتب", name: "رواية عالم صوفي", price: 65, img: "https://m.media-amazon.com/images/I/81A+X50bExL.jpg" },
+            { id: 3, cat: "الهواتف", name: "iPhone 16 Pro Max", price: 5699, img: "https://m.media-amazon.com/images/I/61H7R9uI7LL._AC_SL1500_.jpg" },
+            { id: 4, cat: "الهواتف", name: "Samsung Galaxy S24 Ultra", price: 4499, img: "https://m.media-amazon.com/images/I/71WetsS696L._AC_SL1500_.jpg" },
+            { id: 5, cat: "الألعاب", name: "Sony PlayStation 5 Slim", price: 2149, img: "https://m.media-amazon.com/images/I/5105Xzko79L._AC_SL1500_.jpg" }
         ];
 
         const order = ["الكتب", "الهواتف", "الألعاب"];
@@ -62,12 +81,15 @@
         order.forEach(catName => {
             let html = `<div class="category-section"><h2 class="section-title">${catName}</h2><div class="product-grid-two-cols">`;
             productsDB.filter(p => p.cat === catName).forEach(p => {
-                html += `<div class="product-card">
-                    <img src="${p.img}" alt="${p.name}">
-                    <h4>${p.name}</h4>
-                    <p class="price">${p.price} ريال</p>
-                    <button class="btn-amazon" onclick="addToCart(${p.id})">إضافة للسلة</button>
-                </div>`;
+                html += `
+                    <div class="product-card">
+                        <img src="${p.img}" alt="${p.name}" onclick="goToDetails(${p.id})">
+                        <div class="product-info">
+                            <h4>${p.name}</h4>
+                            <p class="price">${p.price} ريال</p>
+                            <button class="btn-amazon" onclick="addToCart(${p.id})">إضافة للسلة</button>
+                        </div>
+                    </div>`;
             });
             html += `</div></div>`;
             container.innerHTML += html;
@@ -77,7 +99,13 @@
             let cart = JSON.parse(localStorage.getItem('cart')) || [];
             cart.push(productsDB.find(p => p.id === id));
             localStorage.setItem('cart', JSON.stringify(cart));
-            alert('تمت الإضافة للسلة');
+            alert('تمت الإضافة للسلة بنجاح!');
+        }
+
+        function goToDetails(id) {
+            const product = productsDB.find(p => p.id === id);
+            localStorage.setItem('selectedProduct', JSON.stringify(product));
+            window.location.href = 'details.html';
         }
     </script>
 </body>
