@@ -3,24 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="style.css">
+    <style>
+        .dept-container { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin-top: 30px; }
+        .dept-box { width: 200px; padding: 30px; background: #232f3e; color: white; text-align: center; border-radius: 10px; cursor: pointer; transition: 0.3s; }
+        .dept-box:hover { background: #febd69; color: #000; }
+    </style>
 </head>
 <body>
     <header>
-        <h2>أقسام المتجر</h2>
+        <h2>تصفح حسب القسم</h2>
         <nav><a href="index.html">العودة للرئيسية</a></nav>
     </header>
     <div class="container">
-        <div class="product-grid">
-            <div class="product-card" onclick="location.href='index.html'" style="cursor:pointer;">
-                <img src="https://m.media-amazon.com/images/I/61N96P9B7AL._AC_SL1500_.jpg" alt="الكترونيات">
-                <h3>الإلكترونيات</h3>
-                <p>تسوق الآن</p>
-            </div>
-            <div class="product-card" onclick="location.href='index.html'" style="cursor:pointer;">
-                <img src="https://m.media-amazon.com/images/I/71pU4f6lGXL._AC_SL1500_.jpg" alt="كاميرات">
-                <h3>الكاميرات</h3>
-                <p>تسوق الآن</p>
-            </div>
+        <div class="dept-container">
+            <div class="dept-box" onclick="location.href='index.html'">📚 الكتب</div>
+            <div class="dept-box" onclick="location.href='index.html'">📱 الهواتف</div>
+            <div class="dept-box" onclick="location.href='index.html'">💻 منتجات رقمية</div>
+            <div class="dept-box" onclick="location.href='index.html'">🧸 ألعاب أطفال</div>
+            <div class="dept-box" onclick="location.href='index.html'">👕 أزياء</div>
+            <div class="dept-box" onclick="location.href='index.html'">⚡ إلكترونيات</div>
         </div>
     </div>
 </body>
