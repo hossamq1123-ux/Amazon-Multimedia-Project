@@ -2,12 +2,14 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <title>أمازون جازان - الرئيسية</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أمازون جازان - المتجر المتكامل</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
     <header>
-        <div style="color: white; font-weight: bold; font-size: 1.5rem;">AMAZON <span style="color:var(--amazon-orange)">JAZAN</span></div>
+        <div class="logo">AMAZON <span style="color:#febd69">JAZAN</span></div>
         <nav>
             <a href="index.html">الرئيسية</a>
             <a href="departments.html">الأقسام</a>
@@ -18,61 +20,147 @@
     </header>
 
     <div class="container">
-        <h2 style="margin-bottom: 2rem; border-right: 5px solid var(--amazon-orange); padding-right: 15px;">أحدث العروض المختارة</h2>
-        <div class="product-grid" id="product-list"></div>
+        
+        <h2 class="section-title">تصفح حسب القسم</h2>
+        <div class="dept-grid">
+            <div class="dept-box" onclick="filterProducts('كتب')">
+                <span class="dept-icon">📚</span>
+                <h3>الكتب والقرطاسية</h3>
+            </div>
+            <div class="dept-box" onclick="filterProducts('هواتف')">
+                <span class="dept-icon">📱</span>
+                <h3>الهواتف الذكية</h3>
+            </div>
+            <div class="dept-box" onclick="filterProducts('ألعاب')">
+                <span class="dept-icon">🎮</span>
+                <h3>الألعاب والترفيه</h3>
+            </div>
+            <div class="dept-box" onclick="filterProducts('إلكترونيات')">
+                <span class="dept-icon">⚡</span>
+                <h3>الإلكترونيات</h3>
+            </div>
+        </div>
+
+        <hr style="border: 0; border-top: 1px solid #ddd; margin: 40px 0;">
+
+        <h2 id="current-category-title" class="section-title">جميع المنتجات المختارة</h2>
+        <div class="product-grid" id="product-display">
+            </div>
+
     </div>
 
     <section class="testimonials-section">
         <div class="container">
-            <h2 style="text-align: center; color: var(--amazon-orange); margin-bottom: 40px;">آراء عملائنا في جازان</h2>
+            <h2 style="text-align: center; color: #febd69; margin-bottom: 40px;">ماذا يقول عملاؤنا؟</h2>
             <div class="testimonial-container">
                 <div class="testimonial-card">
-                    <img src="https://i.pravatar.cc/150?u=a" alt="User">
-                    <span style="display:block; font-weight:bold;">أحمد يحيى</span>
-                    <p style="font-style:italic; font-size:0.9rem;">"توصيل سريع جداً لصبيا والمنتجات أصلية."</p>
+                    <img src="https://i.pravatar.cc/150?u=hossam1" alt="User">
+                    <span class="customer-name">أحمد المجرشي</span>
+                    <p class="quote">"أفضل متجر إلكتروني يوفر مستلزمات الجامعة بجودة عالية وتوصيل سريع."</p>
                 </div>
                 <div class="testimonial-card">
-                    <img src="https://i.pravatar.cc/150?u=b" alt="User">
-                    <span style="display:block; font-weight:bold;">نورة علي</span>
-                    <p style="font-style:italic; font-size:0.9rem;">"خدمة العملاء ممتازة والأسعار منافسة جداً."</p>
+                    <img src="https://i.pravatar.cc/150?u=hossam2" alt="User">
+                    <span class="customer-name">ليلى علي</span>
+                    <p class="quote">"الأسعار جداً منافسة، والتصميم يسهل عملية الشراء والتنقل بين الأقسام."</p>
                 </div>
                 <div class="testimonial-card">
-                    <img src="https://i.pravatar.cc/150?u=c" alt="User">
-                    <span style="display:block; font-weight:bold;">سلطان الفيفي</span>
-                    <p style="font-style:italic; font-size:0.9rem;">"أفضل متجر إلكتروني يوفر مستلزمات الجامعة."</p>
+                    <img src="https://i.pravatar.cc/150?u=hossam3" alt="User">
+                    <span class="customer-name">فيصل الفيفي</span>
+                    <p class="quote">"قسم الألعاب والمنتجات الرقمية متنوع جداً، تجربة شراء رائعة."</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer>
-        <p>مشروع مادة تطبيقات الوسائط المتعددة - جامعة جازان © 2026</p>
-        <p>📧 support@jazan-amazon.com | 📞 +966 50 123 4567</p>
+    <footer class="main-footer">
+        <div class="footer-top" onclick="window.scrollTo(0,0)">العودة إلى الأعلى</div>
+        <div class="footer-links">
+            <div class="footer-col">
+                <h4>تعرف علينا</h4>
+                <ul>
+                    <li>نبذة عن أمازون جازان</li>
+                    <li>علاقات المستثمرين</li>
+                    <li>أجهزة أمازون</li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>كن شريكاً معنا</h4>
+                <ul>
+                    <li>البيع على أمازون</li>
+                    <li>التسويق بالعمولة</li>
+                    <li>بناء علامتك التجارية</li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>دعنا نساعدك</h4>
+                <ul>
+                    <li>تتبع الطرود</li>
+                    <li>سياسات الإرجاع</li>
+                    <li>مركز المساعدة</li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>تواصل معنا</h4>
+                <ul>
+                    <li>📍 جامعة جازان - الحاسب</li>
+                    <li>📞 800-123-4567</li>
+                    <li>📧 support@jazan-amazon.com</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026، أمازون جازان - مشروع مادة تطبيقات الوسائط المتعددة</p>
+        </div>
     </footer>
 
     <script>
-        const products = [
-            { name: "آيفون 16 برو", price: 4299, img: "https://images.unsplash.com/photo-1696446701796-da61225697cc?w=500", cat: "هواتف" },
-            { name: "لابتوب ماك بوك إير", price: 3800, img: "https://images.unsplash.com/photo-1517336712468-061118277553?w=500", cat: "إلكترونيات" },
-            { name: "رواية عالم صوفي", price: 65, img: "https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=500", cat: "كتب" },
-            { name: "كاميرا سوني A7", price: 6500, img: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=500", cat: "رقمي" },
-            { name: "مجموعة ألعاب تركيب", price: 120, img: "https://images.unsplash.com/photo-1587654711464-3e3998b5329f?w=500", cat: "ألعاب أطفال" }
-        ];
+        const cats = ["كتب", "هواتف", "ألعاب", "إلكترونيات"];
+        const productsData = {
+            "كتب": ["رواية 1984", "كتاب جافا", "أساسيات الشبكات", "تاريخ المملكة", "موسوعة العلوم", "لغة PHP"],
+            "هواتف": ["آيفون 16 برو", "سامسونج S24 Ultra", "هواوي P60", "شاومي 14", "بيكسل 9", "آيفون 15"],
+            "ألعاب": ["بلاي ستيشن 5", "إكس بوكس سيريس", "نينتندو سويتش", "سماعة قيمنق", "كرسي احترافي", "يد تحكم"],
+            "إلكترونيات": ["شاشة سامسونج 4K", "ماك بوك إير", "ساعة آبل S9", "كاميرا سوني", "راوتر 5G", "طابعة ليزر"]
+        };
 
-        const container = document.getElementById('product-list');
+        const allProducts = [];
+        // توليد 50 منتج فريد
         for(let i=0; i<50; i++) {
-            const p = products[i % products.length];
-            container.innerHTML += `
-                <div class="product-card">
-                    <img src="${p.img}&sig=${i}" alt="${p.name}">
-                    <div class="product-info">
-                        <small>${p.cat}</small>
-                        <h4>${p.name} #${i+1}</h4>
-                        <p class="price">${p.price} ريال</p>
-                        <button class="btn-add" onclick="alert('تمت الإضافة للسلة')">إضافة للسلة</button>
-                    </div>
-                </div>`;
+            const currentCat = cats[i % cats.length];
+            const nameList = productsData[currentCat];
+            const randomName = nameList[Math.floor(Math.random() * nameList.length)];
+            allProducts.push({
+                id: i,
+                name: randomName + " الفئة الممتازة",
+                price: Math.floor(Math.random() * 4500) + 150,
+                img: `https://picsum.photos/seed/${i+100}/300/300`,
+                category: currentCat
+            });
         }
+
+        function displayProducts(data) {
+            const container = document.getElementById('product-display');
+            container.innerHTML = data.map(p => `
+                <div class="product-card">
+                    <img src="${p.img}" alt="${p.name}">
+                    <div class="product-info">
+                        <small style="color: #007185">${p.category}</small>
+                        <h4>${p.name}</h4>
+                        <p class="price">${p.price} ريال</p>
+                        <button class="btn-add" onclick="alert('تمت الإضافة للسلة بنجاح!')">إضافة للسلة</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function filterProducts(category) {
+            const filtered = allProducts.filter(p => p.category === category);
+            document.getElementById('current-category-title').innerText = "قسم: " + category;
+            displayProducts(filtered);
+            window.scrollTo({ top: 600, behavior: 'smooth' });
+        }
+
+        // العرض الأولي لكل المنتجات
+        displayProducts(allProducts);
     </script>
 </body>
 </html>
