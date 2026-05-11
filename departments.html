@@ -1,28 +1,21 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="style.css">
-    <style>
-        .dept-container { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin-top: 30px; }
-        .dept-box { width: 200px; padding: 30px; background: #232f3e; color: white; text-align: center; border-radius: 10px; cursor: pointer; transition: 0.3s; }
-        .dept-box:hover { background: #febd69; color: #000; }
-    </style>
-</head>
-<body>
-    <header>
-        <h2>تصفح حسب القسم</h2>
-        <nav><a href="index.html">العودة للرئيسية</a></nav>
-    </header>
-    <div class="container">
-        <div class="dept-container">
-            <div class="dept-box" onclick="location.href='index.html'">📚 الكتب</div>
-            <div class="dept-box" onclick="location.href='index.html'">📱 الهواتف</div>
-            <div class="dept-box" onclick="location.href='index.html'">💻 منتجات رقمية</div>
-            <div class="dept-box" onclick="location.href='index.html'">🧸 ألعاب أطفال</div>
-            <div class="dept-box" onclick="location.href='index.html'">👕 أزياء</div>
-            <div class="dept-box" onclick="location.href='index.html'">⚡ إلكترونيات</div>
+<div class="container">
+    <h2 style="text-align: center; margin-bottom: 30px;">تصفح الفئات الرئيسية</h2>
+    <div class="product-grid">
+        <div class="product-card" style="padding:40px; text-align:center; cursor:pointer;" onclick="location.href='index.html'">
+            <span style="font-size: 3rem;">📚</span>
+            <h3>الكتب والقرطاسية</h3>
+        </div>
+        <div class="product-card" style="padding:40px; text-align:center; cursor:pointer;" onclick="location.href='index.html'">
+            <span style="font-size: 3rem;">📱</span>
+            <h3>الجوالات والأجهزة</h3>
+        </div>
+        <div class="product-card" style="padding:40px; text-align:center; cursor:pointer;" onclick="location.href='index.html'">
+            <span style="font-size: 3rem;">🧸</span>
+            <h3>ألعاب الأطفال</h3>
+        </div>
+        <div class="product-card" style="padding:40px; text-align:center; cursor:pointer;" onclick="location.href='index.html'">
+            <span style="font-size: 3rem;">💻</span>
+            <h3>الخدمات الرقمية</h3>
         </div>
     </div>
-</body>
-</html>
+</div>
