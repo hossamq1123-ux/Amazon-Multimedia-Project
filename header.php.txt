@@ -1,0 +1,12 @@
+<header>
+    <h2>Amazon Clone - Jazan University</h2>
+    <nav>
+        <a href="index.php">Home</a>
+        <a href="departments.php">Departments</a>
+        <a href="media.php">Media</a>
+        <a href="basket.php">Basket</a>
+        <a href="contact.php">Contact Us</a>
+        <a href="social.php">Social Media</a>
+        <a href="login.php">Login</a>
+    </nav>
+</header>
