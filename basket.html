@@ -2,17 +2,13 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <title>السلة - أمازون جازان</title>
+    <title>سلة التسوق - أمازون جازان</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
         <div class="nav-main">
             <div class="logo" onclick="location.href='index.html'"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg"></div>
-            <nav class="nav-links">
-                <a href="index.html">الرئيسية</a>
-                <a href="basket.html">السلة</a>
-            </nav>
         </div>
     </header>
 
@@ -22,8 +18,8 @@
             <div id="cartContainer" style="margin-top:20px;"></div>
         </div>
         <div style="background: white; padding: 20px; border-radius: 8px; border: 1px solid #ddd; height: fit-content;">
-            <p>المجموع (<span id="count">0</span> منتج): <br><b style="font-size:22px;" id="total">0</b> ريال</p>
-            <button class="btn-amazon" style="margin-top:20px;" onclick="location.href='checkout.html'">تابع عملية الشراء</button>
+            <p>المجموع (<span id="count">0</span> منتج): <br><b style="font-size:24px;" id="totalPrice">0</b> ريال</p>
+            <button class="btn-amazon" style="margin-top:20px;" onclick="location.href='checkout.html'">إتمام الشراء</button>
         </div>
     </div>
 
@@ -34,7 +30,7 @@
             let total = 0;
 
             if(cart.length === 0) {
-                container.innerHTML = "<h4>السلة فارغة</h4>";
+                container.innerHTML = "<h4>سلة التسوق فارغة</h4>";
                 return;
             }
 
@@ -42,16 +38,12 @@
                 total += item.price;
                 return `<div style="display:flex; gap:20px; padding:15px; border-bottom:1px solid #eee; align-items:center;">
                     <img src="${item.img}" width="80">
-                    <div style="flex:1;">
-                        <h4 style="color:#007185;">${item.name}</h4>
-                        <p style="color:green; font-size:12px;">متوفر</p>
-                        <button onclick="del(${i})" style="color:#007185; border:none; background:none; cursor:pointer;">حذف</button>
-                    </div>
+                    <div style="flex:1;"><h4>${item.name}</h4><button onclick="del(${i})" style="color:blue; border:none; background:none; cursor:pointer;">حذف</button></div>
                     <div style="font-weight:bold;">${item.price} ريال</div>
                 </div>`;
             }).join('');
 
-            document.getElementById('total').innerText = total.toLocaleString();
+            document.getElementById('totalPrice').innerText = total.toLocaleString();
             document.getElementById('count').innerText = cart.length;
         }
 
