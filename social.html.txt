@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header><a href="index.html" style="color:white; text-decoration:none;">العودة للرئيسية</a></header>
+    <div class="container">
+        <div class="card" style="text-align: center;">
+            <h2>تابعنا على وسائل التواصل</h2>
+            <div style="margin-top: 20px;">
+                <a href="https://twitter.com/JazanUniversity" target="_blank" style="margin: 0 15px; text-decoration: none;">Twitter (X)</a>
+                <a href="https://instagram.com" target="_blank" style="margin: 0 15px; text-decoration: none;">Instagram</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
