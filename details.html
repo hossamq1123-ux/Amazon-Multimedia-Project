@@ -5,34 +5,44 @@
     <title>تفاصيل المنتج - أمازون جازان</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        .details-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; background: white; padding: 40px; border-radius: 15px; margin-top: 20px; }
-        .details-img img { width: 100%; max-height: 500px; object-fit: contain; }
-        .details-info h1 { font-size: 2rem; margin-bottom: 20px; }
-        .details-info .price { font-size: 1.8rem; color: #B12704; }
-        .details-info .desc { margin: 20px 0; line-height: 1.8; color: #555; font-size: 1.1rem; }
+        .details-wrapper { display: flex; gap: 40px; background: white; padding: 40px; border-radius: 15px; margin-top: 20px; align-items: center; }
+        .details-img { flex: 1; }
+        .details-img img { width: 100%; max-height: 450px; object-fit: contain; }
+        .details-info { flex: 1; }
+        .details-info h1 { font-size: 2.2rem; margin-bottom: 15px; color: var(--amazon-navy); }
+        .details-info .price { font-size: 1.8rem; color: #B12704; font-weight: bold; margin-bottom: 20px; }
+        .details-info .desc { font-size: 1.1rem; color: #444; line-height: 2; margin-bottom: 30px; }
     </style>
 </head>
 <body>
     <header>
-        <div class="nav-main"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" width="100" onclick="location.href='index.html'"></div>
+        <div class="nav-main">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" width="100" onclick="location.href='index.html'" style="cursor:pointer">
+        </div>
     </header>
+
     <div class="container">
-        <div class="details-wrapper" id="details-content"></div>
+        <div class="details-wrapper" id="details-content">
+            </div>
     </div>
+
     <script>
         const p = JSON.parse(localStorage.getItem('selectedProduct'));
         if(p) {
             document.getElementById('details-content').innerHTML = `
                 <div class="details-img"><img src="${p.img}"></div>
                 <div class="details-info">
-                    <small>${p.cat}</small>
-                    <h1>${p.name}</h1>
+                    <span style="background:#eee; padding:5px 10px; border-radius:5px;">${p.cat}</span>
+                    <h1 style="margin-top:15px;">${p.name}</h1>
                     <p class="price">${p.price} ريال</p>
-                    <hr>
-                    <h3>وصف المنتج:</h3>
+                    <hr style="margin:20px 0;">
+                    <h3>المواصفات والمميزات:</h3>
                     <p class="desc">${p.desc}</p>
-                    <button class="btn-amazon" style="width: 200px;" onclick="location.href='basket.html'">إضافة إلى السلة</button>
-                </div>`;
+                    <button class="btn-amazon" style="width: 250px;" onclick="location.href='basket.html'">إضافة إلى عربة التسوق</button>
+                </div>
+            `;
+        } else {
+            location.href = 'index.html';
         }
     </script>
 </body>
