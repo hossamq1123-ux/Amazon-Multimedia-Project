@@ -6,21 +6,42 @@
 </head>
 <body>
     <header>
-        <h2>معرض الوسائط</h2>
-    </header>
-    <div class="container">
-        <div class="card">
-            <h3>فيديو تعريفي</h3>
-            <video width="100%" controls>
-                <source src="video.mp4" type="video/mp4">
-                متصفحك لا يدعم تشغيل الفيديو.
-            </video>
+        <div class="nav-main">
+            <div class="logo" onclick="location.href='index.html'"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg"></div>
         </div>
-        <div class="card">
-            <h3>صور المنتجات</h3>
-            <img src="https://via.placeholder.com/150" alt="منتج 1">
-            <img src="https://via.placeholder.com/150" alt="منتج 2">
+    </header>
+
+    <div class="container">
+        <h1 style="margin-bottom: 30px; text-align: center;">شاهد آيفون 16 الجديد كلياً</h1>
+        
+        <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 15px; box-shadow: 0 20px 40px rgba(0,0,0,0.3);">
+            <iframe style="position: absolute; top:0; left: 0; width: 100%; height: 100%; border:0;" 
+                src="https://www.youtube.com/embed/GDlkCkcIqTs?autoplay=1&mute=1" 
+                title="iPhone 16 Presentation" allowfullscreen></iframe>
+        </div>
+
+        <div style="margin-top: 50px; display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
+            <div class="product-card" style="text-align: center;">
+                <img src="https://m.media-amazon.com/images/I/61f43c3P6dL._AC_SL1500_.jpg" style="height: 450px;">
+                <h2>iPhone 16 Pro</h2>
+                <p class="price" style="font-size: 30px;">4,299 ريال</p>
+                <button class="btn-amazon" style="padding: 15px; font-size: 18px;">اطلب الآن</button>
+            </div>
+            <div style="background: white; padding: 40px; border-radius: 15px; border: 1px solid #ddd;">
+                <h3 style="color: #c45500;">المواصفات الفنية:</h3>
+                <ul style="margin: 25px; line-height: 2.5; font-size: 18px;">
+                    <li>شريحة A18 Pro الجديدة كلياً</li>
+                    <li>نظام كاميرات متطور 48 ميجابكسل</li>
+                    <li>زر التحكم في الكاميرا المبتكر</li>
+                    <li>أكبر عمر بطارية في تاريخ الآيفون</li>
+                    <li>تصميم متين من التيتانيوم Grade 5</li>
+                </ul>
+            </div>
         </div>
     </div>
+
+    <footer class="amazon-footer">
+        <div class="footer-bottom"><p>© 2026، أمازون جازان - مشروع الطالب حسام</p></div>
+    </footer>
 </body>
 </html>
