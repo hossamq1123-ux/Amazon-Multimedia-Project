@@ -2,76 +2,31 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <title>إتمام الشراء - أمازون جازان</title>
+    <title>تفاصيل الدفع - أمازون جازان</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        .checkout-box { background: white; padding: 25px; border-radius: 8px; border: 1px solid #ddd; margin-bottom: 20px; }
-        .step-title { font-size: 1.3rem; font-weight: bold; margin-bottom: 15px; display: flex; gap: 10px; }
-        .price-final { color: #B12704; font-size: 1.5rem; font-weight: bold; }
+        .payment-body { background-color: #fffaf2; display: flex; justify-content: center; padding: 40px; }
+        .payment-card { background: #fffaf2; width: 100%; max-width: 450px; padding: 30px; }
+        .input-group { margin-bottom: 20px; }
+        .input-group label { display: block; margin-bottom: 8px; color: #8b7355; font-weight: bold; }
+        .input-group input, select { width: 100%; padding: 12px; border: none; border-radius: 10px; background: white; }
+        .confirm-btn { background-color: #76c91d; color: white; border: none; width: 100%; padding: 15px; border-radius: 12px; font-weight: bold; cursor: pointer; }
     </style>
 </head>
-<body style="background: #f7f7f7;">
-
-    <header style="background: white; border-bottom: 1px solid #ddd; padding: 15px 0;">
-        <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" width="100" style="filter: brightness(0);" onclick="window.location.href='index.html'">
-            <h1 style="font-weight: normal; font-size: 26px;">إتمام الشراء</h1>
-            <div style="font-size: 22px; color: #888;">🔒</div>
+<body class="payment-body">
+    <div class="payment-card">
+        <h2 style="text-align: center; margin-bottom: 30px;">تفاصيل الدفع</h2>
+        <div class="input-group"><label>الاسم الكامل</label><input type="text" placeholder="أدخل اسمك الكامل"></div>
+        <div class="input-group"><label>عنوان التوصيل</label><input type="text" placeholder="المدينة، الحي، الشارع"></div>
+        <div class="input-group"><label>رقم الجوال</label><input type="text" placeholder="05xxxxxxxx"></div>
+        <div class="input-group">
+            <label>طريقة الدفع</label>
+            <select><option>مدى / فيزا</option><option>الدفع عند الاستلام</option></select>
         </div>
-    </header>
-
-    <div class="container" style="display: grid; grid-template-columns: 2fr 1fr; gap: 30px; margin-top: 30px;">
-        
-        <div>
-            <div class="checkout-box">
-                <div class="step-title"><span>1</span> عنوان الشحن</div>
-                <div style="padding-right: 30px;">
-                    <p><b>حسام - جامعة جازان</b></p>
-                    <p>المبنى الرئيسي، كلية الحاسب</p>
-                    <p>جازان، المملكة العربية السعودية</p>
-                </div>
-            </div>
-
-            <div class="checkout-box">
-                <div class="step-title"><span>2</span> طريقة الدفع</div>
-                <div style="padding-right: 30px;">
-                    <input type="radio" name="p" checked> <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" width="30"> <b>بطاقة مدى / ماستر كارد (**** 4455)</b>
-                </div>
-            </div>
-
-            <div class="checkout-box">
-                <div class="step-title"><span>3</span> مراجعة العناصر</div>
-                <div style="display: flex; gap: 20px; padding: 10px 30px; align-items: center;">
-                    <img src="https://m.media-amazon.com/images/I/61f43c3P6dL._AC_SL1500_.jpg" width="80">
-                    <div>
-                        <p><b>آيفون 16 برو - 256 جيجابايت</b></p>
-                        <p style="color: #c45500;">توصيل مجاني متوقع: غداً</p>
-                    </div>
-                </div>
-            </div>
+        <div style="margin: 20px 0; border-top: 1px solid #ddd; padding-top: 20px;">
+            <p style="font-size: 1.5rem; font-weight: bold;">الإجمالي: 4299 ريال</p>
         </div>
-
-        <div style="height: fit-content; position: sticky; top: 100px;">
-            <div class="checkout-box" style="text-align: center;">
-                <button class="btn-amazon" onclick="alert('تم تأكيد طلبك بنجاح! رقم الطلب: #AZ-8890'); window.location.href='index.html'" style="padding: 15px; font-size: 18px;">
-                    إتمام الطلب
-                </button>
-                <p style="font-size: 11px; margin-top: 10px; color: #555;">بإتمامك للطلب، فأنت توافق على شروط بيع أمازون جازان.</p>
-                <hr style="margin: 20px 0;">
-                <h3 style="text-align: right; margin-bottom: 15px;">ملخص الطلب</h3>
-                <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
-                    <span>العناصر:</span><span>4,299.00 ريال</span>
-                </div>
-                <div style="display: flex; justify-content: space-between; margin-bottom: 20px; border-bottom: 1px solid #eee; padding-bottom: 10px;">
-                    <span>الشحن:</span><span>0.00 ريال</span>
-                </div>
-                <div style="display: flex; justify-content: space-between;">
-                    <span class="price-final">إجمالي الطلب:</span>
-                    <span class="price-final">4,299.00 ريال</span>
-                </div>
-            </div>
-        </div>
+        <button class="confirm-btn" onclick="alert('تم الطلب!'); location.href='index.html'">تأكيد الطلب والدفع</button>
     </div>
-
 </body>
 </html>
