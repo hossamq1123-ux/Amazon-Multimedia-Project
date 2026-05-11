@@ -1,3 +1,5 @@
+/* إعادة ضبط شاملة */
+* { margin: 0; padding: 0; box-sizing: border-box; }
 :root {
     --amazon-navy: #131921;
     --amazon-squid: #232f3e;
@@ -5,45 +7,44 @@
     --bg-gray: #eaeded;
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: 'Segoe UI', sans-serif; background: var(--bg-gray); direction: rtl; }
+body { font-family: 'Segoe UI', Tahoma, sans-serif; background: var(--bg-gray); direction: rtl; color: #0f1111; }
 
 /* هيدر كبير واحترافي */
 header { background: var(--amazon-navy); color: white; position: sticky; top: 0; z-index: 1000; }
-.nav-main { display: flex; align-items: center; padding: 10px 3%; gap: 20px; height: 80px; }
-.logo img { width: 120px; cursor: pointer; }
+.nav-main { display: flex; align-items: center; padding: 10px 2%; gap: 20px; height: 70px; }
+.logo img { width: 100px; cursor: pointer; padding-top: 5px; }
 
-.search-container { display: flex; flex-grow: 1; height: 45px; }
-.search-container input { flex-grow: 1; border: none; border-radius: 0 6px 6px 0; padding: 0 15px; font-size: 16px; outline: none; }
-.search-btn { background: var(--amazon-orange); border: none; width: 55px; border-radius: 6px 0 0 6px; cursor: pointer; font-size: 20px; }
+.search-container { display: flex; flex: 1; height: 40px; }
+.search-container input { flex: 1; border: none; border-radius: 0 4px 4px 0; padding: 0 15px; font-size: 16px; outline: none; }
+.search-btn { background: var(--amazon-orange); border: none; width: 50px; border-radius: 4px 0 0 4px; cursor: pointer; font-size: 20px; }
 
-.nav-links { background: var(--amazon-squid); padding: 12px 3%; display: flex; gap: 30px; }
-.nav-links a { color: white; text-decoration: none; font-size: 15px; font-weight: 500; }
+.nav-links { background: var(--amazon-squid); padding: 8px 2%; display: flex; gap: 20px; }
+.nav-links a { color: white; text-decoration: none; font-size: 14px; font-weight: 500; }
 
-/* سلايدر حديث */
-.testimonial-slider-v2 { background: white; margin: 40px 0; padding: 50px; text-align: center; border-radius: 12px; border: 1px solid #ddd; }
-.active-review { font-size: 1.5rem; color: #333; font-style: italic; margin-bottom: 15px; }
-.active-reviewer { font-weight: bold; color: #c45500; }
+/* الحاوية والشبكة */
+.container { width: 95%; max-width: 1400px; margin: 20px auto; min-height: 400px; }
 
-/* التواصل الاجتماعي */
-.social-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-top: 40px; }
-.social-card { background: white; padding: 50px; border-radius: 15px; text-align: center; transition: 0.3s; color: white; text-decoration: none; }
-.social-card.tw { background: #000; }
-.social-card.inst { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
-.social-card.fb { background: #4267B2; }
-.social-card:hover { transform: scale(1.05); }
+/* مربعات الأقسام (إصلاح القائمة النصية) */
+.dept-quick-nav { display: flex; gap: 15px; margin-bottom: 30px; }
+.dept-card { background: white; padding: 25px; flex: 1; text-align: center; border-radius: 4px; cursor: pointer; border: 1px solid #ddd; }
+.dept-card:hover { border-color: var(--amazon-orange); box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
 
-/* الفوتر */
+/* المنتجات */
+.product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 20px; }
+.product-card { background: white; padding: 15px; border-radius: 4px; display: flex; flex-direction: column; border: 1px solid #eee; }
+.product-card img { width: 100%; height: 180px; object-fit: contain; }
+.price { color: #B12704; font-size: 20px; font-weight: bold; margin: 10px 0; }
+.btn-amazon { background: #ffd814; border: 1px solid #fcd200; border-radius: 20px; padding: 8px; cursor: pointer; font-weight: bold; }
+
+/* سلايدر التقييمات التلقائي */
+.testimonial-slider { background: white; padding: 50px; text-align: center; margin-top: 40px; border: 1px solid #ddd; border-radius: 8px; }
+#reviewBox { font-size: 1.4rem; font-style: italic; color: #333; min-height: 80px; transition: 0.5s; }
+#reviewerBox { font-weight: bold; color: #c45500; margin-top: 10px; }
+
+/* الفوتر الاحترافي (نفس الصورة) */
 .amazon-footer { background: var(--amazon-squid); color: white; margin-top: 60px; }
-.back-to-top { background: #37475a; padding: 15px; text-align: center; cursor: pointer; }
-.footer-cols { display: grid; grid-template-columns: repeat(4, 1fr); padding: 50px 10%; gap: 40px; }
+.back-to-top { background: #37475a; padding: 15px; text-align: center; cursor: pointer; font-size: 13px; }
+.footer-cols { display: grid; grid-template-columns: repeat(4, 1fr); padding: 40px 8%; gap: 30px; border-bottom: 1px solid #3a4553; }
 .footer-cols ul { list-style: none; margin-top: 15px; }
-.footer-cols li { color: #ddd; font-size: 14px; margin-bottom: 10px; cursor: pointer; }
-.footer-bottom { background: var(--amazon-navy); padding: 30px; text-align: center; border-top: 1px solid #3a4553; }
-
-/* بطاقات المنتجات */
-.container { width: 95%; max-width: 1400px; margin: 20px auto; }
-.product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; }
-.product-card { background: white; padding: 20px; border-radius: 8px; transition: 0.3s; }
-.product-card img { width: 100%; height: 220px; object-fit: contain; }
-.btn-amazon { background: #ffd814; border: 1px solid #fcd200; border-radius: 20px; padding: 10px; cursor: pointer; font-weight: bold; width: 100%; margin-top: 10px; }
+.footer-cols li { color: #ddd; font-size: 13px; margin-bottom: 10px; cursor: pointer; }
+.footer-bottom { background: var(--amazon-navy); padding: 30px; text-align: center; font-size: 12px; }
