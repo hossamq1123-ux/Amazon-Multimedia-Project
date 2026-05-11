@@ -16,8 +16,8 @@
                 <input type="text" id="searchInput" placeholder="ابحث عن آيفون 16، كتب، إلكترونيات...">
                 <button class="search-btn" onclick="performSearch()">🔍</button>
             </div>
-            <div class="user-nav" id="userLoginStatus" onclick="handleLoginClick()">
-                <small>مرحباً، <span id="userNameDisplay">حسام</span></small>
+            <div class="user-nav" onclick="handleLoginClick()">
+                <small>مرحباً، <span id="userName">حسام</span></small>
                 <div style="font-weight: bold;">الحساب والقوائم</div>
             </div>
         </div>
@@ -33,19 +33,19 @@
 
     <div class="container">
         <div class="dept-quick-nav">
-            <div class="dept-card" onclick="filter('كتب')"><h3>الكتب</h3><p>تصفح الآن</p></div>
-            <div class="dept-card" onclick="filter('هواتف')"><h3>الهواتف</h3><p>تصفح الآن</p></div>
-            <div class="dept-card" onclick="filter('ألعاب')"><h3>الألعاب</h3><p>تصفح الآن</p></div>
-            <div class="dept-card" onclick="filter('إلكترونيات')"><h3>الإلكترونيات</h3><p>تصفح الآن</p></div>
+            <div class="dept-card" onclick="filter('كتب')"><h3>الكتب</h3><p>تصفح الكل</p></div>
+            <div class="dept-card" onclick="filter('هواتف')"><h3>الهواتف</h3><p>تصفح الكل</p></div>
+            <div class="dept-card" onclick="filter('ألعاب')"><h3>الألعاب</h3><p>تصفح الكل</p></div>
+            <div class="dept-card" onclick="filter('إلكترونيات')"><h3>الإلكترونيات</h3><p>تصفح الكل</p></div>
         </div>
 
         <h2 id="sectionTitle" class="section-title">أحدث العروض المختارة</h2>
         <div class="product-grid" id="productGrid"></div>
 
         <div class="testimonial-slider-v2">
-            <h2 style="margin-bottom: 30px; color: #232f3e;">ماذا يقول عملاؤنا؟</h2>
+            <h2>ماذا يقول عملاؤنا؟</h2>
             <div class="slider-content">
-                <div id="reviewBox" class="active-review">"تحميل التقييمات..."</div>
+                <div id="reviewBox" class="active-review">"جاري تحميل التقييمات..."</div>
                 <div id="reviewerBox" class="active-reviewer"></div>
             </div>
         </div>
@@ -56,14 +56,13 @@
         <div class="footer-cols">
             <div><h4>تعرف علينا</h4><ul><li>عن أمازون</li><li>وظائف</li></ul></div>
             <div><h4>كن شريكاً معنا</h4><ul><li>البيع على أمازون</li><li>التسويق</li></ul></div>
-            <div><h4>دعنا نساعدك</h4><ul><li>تتبع الطرود</li><li>سياسة الإرجاع</li></ul></div>
+            <div><h4>دعنا نساعدك</h4><ul><li>حسابك</li><li>سياسة الإرجاع</li></ul></div>
             <div><h4>تواصل معنا</h4><ul><li>📍 جازان</li><li>📞 8001234567</li></ul></div>
         </div>
-        <div class="footer-bottom"><p>© 2026، أمازون جازان - مشروع الطالب حسام - جامعة جازان</p></div>
+        <div class="footer-bottom"><p>© 2026، أمازون جازان - تصميم الطالب حسام</p></div>
     </footer>
 
     <script>
-        // توليد 50 منتج
         const products = [];
         const cats = ["كتب", "هواتف", "ألعاب", "إلكترونيات"];
         for(let i=0; i<50; i++) {
@@ -83,7 +82,7 @@
                         <small>${p.cat}</small>
                         <h4>${p.name}</h4>
                         <p class="price">${p.price} ريال</p>
-                        <button class="btn-amazon" onclick="alert('تمت الإضافة للسلة')">إضافة للسلة</button>
+                        <button class="btn-amazon" onclick="alert('أضيف للسلة')">إضافة للسلة</button>
                     </div>
                 </div>
             `).join('');
@@ -96,28 +95,22 @@
         }
 
         function handleLoginClick() {
-            if(localStorage.getItem('isLoggedIn')) {
-                alert('أنت مسجل دخولك بالفعل يا حسام!');
-            } else {
-                location.href = 'login.html';
-            }
+            if(localStorage.getItem('isLoggedIn')) { alert('أنت مسجل دخولك بالفعل!'); } 
+            else { location.href = 'login.html'; }
         }
 
-        // سلايدر التقييمات التلقائي (كل 3 ثواني)
         const reviews = [
-            { text: "أفضل متجر إلكتروني في جازان، التوصيل سريع جداً والمنتجات أصلية.", user: "أحمد المجرشي" },
-            { text: "آيفون 16 وصلني مغلفاً بشكل ممتاز وبسعر منافس جداً.", user: "سارة الفيفي" },
-            { text: "تصميم الموقع مريح جداً للعين ويسهل الوصول لكل الأقسام.", user: "فيصل الحربي" }
+            { text: "أفضل متجر إلكتروني في جازان، التوصيل سريع جداً.", user: "أحمد المجرشي" },
+            { text: "آيفون 16 وصلني مغلفاً بشكل ممتاز وبسعر منافس.", user: "يحيى الفيفي" },
+            { text: "الموقع سهل الاستخدام والبحث فيه ذكي جداً.", user: "فيصل الحربي" }
         ];
         let rIdx = 0;
         function rotateReview() {
-            const r = reviews[rIdx];
-            document.getElementById('reviewBox').innerText = `"${r.text}"`;
-            document.getElementById('reviewerBox').innerText = `- ${r.user}`;
+            document.getElementById('reviewBox').innerText = `"${reviews[rIdx].text}"`;
+            document.getElementById('reviewerBox').innerText = `- ${reviews[rIdx].user}`;
             rIdx = (rIdx + 1) % reviews.length;
         }
         setInterval(rotateReview, 3000);
-        
         rotateReview();
         render(products);
     </script>
