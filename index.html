@@ -3,42 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>أمازون جازان - المتجر المتكامل</title>
+    <title>أمازون جازان - الرئيسية</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
         <div class="nav-main">
             <div class="logo" onclick="location.href='index.html'">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon Logo">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon">
             </div>
             <div class="search-container">
-                <input type="text" id="searchInput" placeholder="ابحث في أمازون جازان...">
+                <input type="text" id="searchInput" placeholder="ابحث في المتجر...">
                 <button class="search-btn" onclick="performSearch()">🔍</button>
             </div>
-            <div class="user-nav" onclick="location.href='login.html'">
+            <div class="user-nav">
                 <small>مرحباً، حسام</small>
                 <div style="font-weight: bold;">الحساب والقوائم</div>
             </div>
         </div>
         <nav class="nav-links">
             <a href="index.html">الرئيسية</a>
-            <a href="departments.html">الأقسام</a>
-            <a href="media.html">الوسائط </a>
             <a href="basket.html">السلة</a>
-            <a href="contact.html">اتصل بنا</a>
             <a href="social.html">التواصل الاجتماعي</a>
         </nav>
     </header>
+
     <div class="container">
-        <div class="dept-quick-nav">
-            <div class="dept-card" onclick="filter('كتب')"><h3>الكتب</h3><p>تصفح الآن</p></div>
-            <div class="dept-card" onclick="filter('هواتف')"><h3>الهواتف</h3><p>تصفح الآن</p></div>
-            <div class="dept-card" onclick="filter('ألعاب')"><h3>الألعاب</h3><p>تصفح الآن</p></div>
-            <div class="dept-card" onclick="filter('إلكترونيات')"><h3>الإلكترونيات</h3><p>تصفح الآن</p></div>
-        </div>
-        <h2 id="sectionTitle" class="section-title">أحدث المنتجات المختارة</h2>
-        <div class="product-grid" id="productGrid"></div>
+        <div id="categories-container"></div>
+
         <section class="testimonial-section">
             <div class="testimonial-header">
                 <h2>ماذا يقول عملاؤنا؟</h2>
@@ -55,97 +47,69 @@
             </div>
         </section>
     </div>
+
     <footer class="amazon-footer">
         <div class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">العودة إلى الأعلى</div>
-        <div class="footer-cols">
-            <div>
-                <h4>تعرف علينا</h4>
-                <ul><li>عن أمازون جازان</li><li>وظائف</li><li>الاستدامة</li></ul>
-            </div>
-            <div>
-                <h4>كن شريكاً معنا</h4>
-                <ul><li>البيع على أمازون</li><li>التسويق بالعمولة</li><li>بناء علامتك</li></ul>
-            </div>
-            <div>
-                <h4>دعنا نساعدك</h4>
-                <ul><li>حسابك</li><li>تتبع الطرود</li><li>سياسة الإرجاع</li></ul>
-            </div>
-            <div>
-                <h4>تواصل معنا</h4>
-                <ul>
-                    <li>📍 جامعة جازان - الحاسب</li>
-                    <li>📞 800-123-4567</li>
-                    <li>📧 support@amazon-jazan.com</li>
-                </ul>
-            </div>
-        </div>
         <div class="footer-bottom">
             <p>© 2026، أمازون جازان - مشروع الطالب حسام - جامعة جازان</p>
         </div>
     </footer>
+
     <script>
-        const cats = ["كتب", "هواتف", "ألعاب", "إلكترونيات"];
-        const productNames = ["آيفون 16 برو", "ماك بوك إير M3", "كتاب برمجة PHP", "سماعة عازلة للصوت", "بلاي ستيشن 5", "ساعة ذكية Ultra", "رواية عالم صوفي", "شاشة 4K ذكية"];
-        const products = [];
-        for(let i=0; i<50; i++){
-            products.push({
-                name: productNames[i % productNames.length] + " (إصدار " + (i+1) + ")",
-                price: Math.floor(Math.random() * 5000) + 150,
-                cat: cats[i % cats.length],
-                img: `https://picsum.photos/seed/${i+20}/300/300`
+        // قاعدة بيانات ثابتة (الأسعار والصور لا تتغير)
+        const productsDB = [
+            { id: 1, cat: "الكتب", name: "كتاب أساسيات PHP", price: 85, img: "https://m.media-amazon.com/images/I/41mS+o4095L._AC_SY780_.jpg", desc: "تعلم برمجة المواقع باستخدام PHP." },
+            { id: 2, cat: "الكتب", name: "رواية عالم صوفي", price: 55, img: "https://m.media-amazon.com/images/I/41-T1S-KxlL._AC_SY1000_.jpg", desc: "رحلة في عالم الفلسفة." },
+            { id: 3, cat: "الهواتف", name: "iPhone 16 Pro Max", price: 5499, img: "https://m.media-amazon.com/images/I/61f43c3P6dL._AC_SL1500_.jpg", desc: "أحدث معالج A18 Pro وكاميرا احترافية." },
+            { id: 4, cat: "الهواتف", name: "Samsung Galaxy S24 Ultra", price: 4199, img: "https://m.media-amazon.com/images/I/71WetsS696L._AC_SL1500_.jpg", desc: "شاشة جبارة وذكاء اصطناعي متطور." },
+            { id: 5, cat: "الألعاب", name: "PlayStation 5 Console", price: 2299, img: "https://m.media-amazon.com/images/I/5105Xzko79L._AC_SL1500_.jpg", desc: "جهاز ألعاب الجيل الجديد." },
+            { id: 6, cat: "الألعاب", name: "نينتندو سويتش OLED", price: 1450, img: "https://m.media-amazon.com/images/I/61m9v64N7PL._AC_SL1500_.jpg", desc: "ألعاب ممتعة في أي مكان." },
+            { id: 7, cat: "الإلكترونيات", name: "شاشة TCL 65 Inch 4K", price: 1899, img: "https://m.media-amazon.com/images/I/71u9iB6YpYL._AC_SL1500_.jpg", desc: "تجربة مشاهدة سينمائية بدقة 4K." },
+            { id: 8, cat: "الإلكترونيات", name: "ماك بوك إير M3", price: 4599, img: "https://m.media-amazon.com/images/I/71jG+e7roXL._AC_SL1500_.jpg", desc: "خفة في الوزن وقوة في الأداء." }
+        ];
+
+        const order = ["الكتب", "الهواتف", "الألعاب", "الإلكترونيات"];
+        const container = document.getElementById('categories-container');
+
+        order.forEach(catName => {
+            const section = document.createElement('div');
+            section.className = 'category-section';
+            section.innerHTML = `<h2 class="section-title">${catName}</h2>`;
+            const grid = document.createElement('div');
+            grid.className = 'product-grid';
+            productsDB.filter(p => p.cat === catName).forEach(p => {
+                grid.innerHTML += `
+                    <div class="product-card" onclick="goToDetails(${p.id})">
+                        <img src="${p.img}">
+                        <div class="product-info">
+                            <h4>${p.name}</h4>
+                            <p class="price">${p.price} ريال</p>
+                            <button class="btn-amazon">عرض التفاصيل</button>
+                        </div>
+                    </div>`;
             });
+            section.appendChild(grid);
+            container.appendChild(section);
+        });
+
+        function goToDetails(id) {
+            const product = productsDB.find(p => p.id === id);
+            localStorage.setItem('selectedProduct', JSON.stringify(product));
+            window.location.href = 'details.html';
         }
-        function render(data) {
-            const grid = document.getElementById('productGrid');
-            grid.innerHTML = data.map(p => `
-                <div class="product-card">
-                    <img src="${p.img}" alt="${p.name}">
-                    <div class="product-info">
-                        <small style="color: #007185">${p.cat}</small>
-                        <h4>${p.name}</h4>
-                        <p class="price">${p.price} ريال</p>
-                        <button class="btn-amazon" onclick="alert('تمت الإضافة للسلة')">إضافة للسلة</button>
-                    </div>
-                </div>
-            `).join('');
-        }
-        function performSearch() {
-            const query = document.getElementById('searchInput').value.toLowerCase();
-            const filtered = products.filter(p => p.name.toLowerCase().includes(query) || p.cat.includes(query));
-            document.getElementById('sectionTitle').innerText = "نتائج البحث عن: " + query;
-            render(filtered);
-        }
-        function filter(c) {
-            const filtered = products.filter(p => p.cat === c);
-            document.getElementById('sectionTitle').innerText = "قسم: " + c;
-            render(filtered);
-        }
+
         const reviews = [
             { text: "سرعة التوصيل مذهلة، طلبت الآيفون ووصلني في نفس اليوم بجازان!", name: "محمد العتودي" },
-            { text: "خدمة العملاء محترفة جداً، ساعدوني في استبدال المنتج بكل سهولة وبدون تعقيد.", name: "ليلى القحطاني" },
-            { text: "الأسعار منافسة جداً مقارنة بالمتاجر الأخرى، والمنتجات أصلية ومضمونة.", name: "خالد صميلي" },
-            { text: "تصميم الموقع مريح وسهل جداً، والبحث عن المنتجات ذكي ودقيق للغاية.", name: "نورة جابر" },
-            { text: "أفضل مكان لشراء مستلزمات الجامعة والدراسة في المنطقة، أنصح به الجميع.", name: "إبراهيم حكمي" }
+            { text: "خدمة العملاء محترفة جداً، ساعدوني في استبدال المنتج بكل سهولة.", name: "ليلى القحطاني" },
+            { text: "الأسعار منافسة جداً، أنصح به لطلاب الجامعة.", name: "خالد صميلي" }
         ];
-        let currentIdx = 0;
-        function updateReviewDisplay() {
-            const rBox = document.getElementById('reviewBox');
-            const nBox = document.getElementById('reviewerBox');
-            rBox.style.opacity = 0;
-            setTimeout(() => {
-                rBox.innerText = `"${reviews[currentIdx].text}"`;
-                nBox.innerText = `- ${reviews[currentIdx].name}`;
-                rBox.style.opacity = 1;
-            }, 200);
+        let rIdx = 0;
+        function changeReview(d) {
+            rIdx = (rIdx + d + reviews.length) % reviews.length;
+            document.getElementById('reviewBox').innerText = `"${reviews[rIdx].text}"`;
+            document.getElementById('reviewerBox').innerText = `- ${reviews[rIdx].name}`;
         }
-        function changeReview(dir) {
-            currentIdx += dir;
-            if (currentIdx > reviews.length - 1) currentIdx = 0;
-            if (currentIdx < 0) currentIdx = reviews.length - 1;
-            updateReviewDisplay();
-        }
-        render(products);
-        updateReviewDisplay();
+        changeReview(0);
     </script>
 </body>
 </html>
