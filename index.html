@@ -3,108 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>أمازون جازان - المتجر المتكامل</title>
+    <title>أمازون جازان - الصفحة الرئيسية</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <header>
-        <div class="logo">AMAZON <span style="color:#febd69">JAZAN</span></div>
-        <nav>
+        <div class="nav-main">
+            <div class="logo" onclick="location.href='index.html'">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon Logo">
+            </div>
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="ابحث عن منتجات، كتب، هواتف...">
+                <button class="search-btn" onclick="performSearch()">🔍</button>
+            </div>
+            <div class="user-nav" onclick="location.href='login.html'">
+                <small>مرحباً حسام</small>
+                <div style="font-weight: bold;">الحساب والقوائم</div>
+            </div>
+        </div>
+        <nav class="nav-links">
             <a href="index.html">الرئيسية</a>
             <a href="departments.html">الأقسام</a>
+            <a href="media.html">الوسائط</a>
             <a href="basket.html">السلة</a>
             <a href="contact.html">اتصل بنا</a>
-            <a href="login.html">دخول</a>
+            <a href="social.html">التواصل الاجتماعي</a>
         </nav>
     </header>
 
     <div class="container">
         
-        <h2 class="section-title">تصفح حسب القسم</h2>
-        <div class="dept-grid">
-            <div class="dept-box" onclick="filterProducts('كتب')">
-                <span class="dept-icon">📚</span>
-                <h3>الكتب والقرطاسية</h3>
-            </div>
-            <div class="dept-box" onclick="filterProducts('هواتف')">
-                <span class="dept-icon">📱</span>
-                <h3>الهواتف الذكية</h3>
-            </div>
-            <div class="dept-box" onclick="filterProducts('ألعاب')">
-                <span class="dept-icon">🎮</span>
-                <h3>الألعاب والترفيه</h3>
-            </div>
-            <div class="dept-box" onclick="filterProducts('إلكترونيات')">
-                <span class="dept-icon">⚡</span>
-                <h3>الإلكترونيات</h3>
-            </div>
+        <div class="dept-quick-nav">
+            <div class="dept-card" onclick="filter('كتب')"><h3>الكتب</h3><p>تصفح الآن</p></div>
+            <div class="dept-card" onclick="filter('هواتف')"><h3>الهواتف</h3><p>تصفح الآن</p></div>
+            <div class="dept-card" onclick="filter('ألعاب')"><h3>الألعاب</h3><p>تصفح الآن</p></div>
+            <div class="dept-card" onclick="filter('إلكترونيات')"><h3>الإلكترونيات</h3><p>تصفح الآن</p></div>
         </div>
 
-        <hr style="border: 0; border-top: 1px solid #ddd; margin: 40px 0;">
-
-        <h2 id="current-category-title" class="section-title">جميع المنتجات المختارة</h2>
-        <div class="product-grid" id="product-display">
+        <h2 id="sectionTitle" class="section-title">أحدث المنتجات المختارة</h2>
+        
+        <div class="product-grid" id="productGrid">
             </div>
 
+        <div class="review-slider">
+            <h2 style="color: var(--amazon-navy); margin-bottom: 20px;">ماذا يقول عملاؤنا؟</h2>
+            <div id="reviewText" class="review-text">"أفضل تجربة شراء مررت بها، التوصيل في جازان كان مذهلاً وسريعاً."</div>
+            <div class="reviewer-name" id="reviewerName">- أحمد المجرشي</div>
+            <div class="slider-controls">
+                <button onclick="prevReview()">السابق</button>
+                <button onclick="nextReview()">التالي</button>
+            </div>
+        </div>
     </div>
 
-    <section class="testimonials-section">
-        <div class="container">
-            <h2 style="text-align: center; color: #febd69; margin-bottom: 40px;">ماذا يقول عملاؤنا؟</h2>
-            <div class="testimonial-container">
-                <div class="testimonial-card">
-                    <img src="https://i.pravatar.cc/150?u=hossam1" alt="User">
-                    <span class="customer-name">أحمد المجرشي</span>
-                    <p class="quote">"أفضل متجر إلكتروني يوفر مستلزمات الجامعة بجودة عالية وتوصيل سريع."</p>
-                </div>
-                <div class="testimonial-card">
-                    <img src="https://i.pravatar.cc/150?u=hossam2" alt="User">
-                    <span class="customer-name">ليلى علي</span>
-                    <p class="quote">"الأسعار جداً منافسة، والتصميم يسهل عملية الشراء والتنقل بين الأقسام."</p>
-                </div>
-                <div class="testimonial-card">
-                    <img src="https://i.pravatar.cc/150?u=hossam3" alt="User">
-                    <span class="customer-name">فيصل الفيفي</span>
-                    <p class="quote">"قسم الألعاب والمنتجات الرقمية متنوع جداً، تجربة شراء رائعة."</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer class="main-footer">
-        <div class="footer-top" onclick="window.scrollTo(0,0)">العودة إلى الأعلى</div>
-        <div class="footer-links">
-            <div class="footer-col">
+    <footer class="amazon-footer">
+        <div class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">العودة إلى الأعلى</div>
+        <div class="footer-cols">
+            <div>
                 <h4>تعرف علينا</h4>
-                <ul>
-                    <li>نبذة عن أمازون جازان</li>
-                    <li>علاقات المستثمرين</li>
-                    <li>أجهزة أمازون</li>
-                </ul>
+                <ul><li>عن أمازون جازان</li><li>وظائف شاغرة</li><li>الاستدامة</li></ul>
             </div>
-            <div class="footer-col">
+            <div>
                 <h4>كن شريكاً معنا</h4>
-                <ul>
-                    <li>البيع على أمازون</li>
-                    <li>التسويق بالعمولة</li>
-                    <li>بناء علامتك التجارية</li>
-                </ul>
+                <ul><li>البيع على أمازون</li><li>برنامج التسويق</li><li>بناء علامتك</li></ul>
             </div>
-            <div class="footer-col">
+            <div>
                 <h4>دعنا نساعدك</h4>
-                <ul>
-                    <li>تتبع الطرود</li>
-                    <li>سياسات الإرجاع</li>
-                    <li>مركز المساعدة</li>
-                </ul>
+                <ul><li>حسابك</li><li>مساعدة</li><li>سياسة الإرجاع</li></ul>
             </div>
-            <div class="footer-col">
+            <div>
                 <h4>تواصل معنا</h4>
                 <ul>
                     <li>📍 جامعة جازان - الحاسب</li>
                     <li>📞 800-123-4567</li>
-                    <li>📧 support@jazan-amazon.com</li>
+                    <li>📧 support@amazon-jazan.com</li>
                 </ul>
             </div>
         </div>
@@ -114,53 +87,68 @@
     </footer>
 
     <script>
+        // نظام توليد 50 منتج
         const cats = ["كتب", "هواتف", "ألعاب", "إلكترونيات"];
-        const productsData = {
-            "كتب": ["رواية 1984", "كتاب جافا", "أساسيات الشبكات", "تاريخ المملكة", "موسوعة العلوم", "لغة PHP"],
-            "هواتف": ["آيفون 16 برو", "سامسونج S24 Ultra", "هواوي P60", "شاومي 14", "بيكسل 9", "آيفون 15"],
-            "ألعاب": ["بلاي ستيشن 5", "إكس بوكس سيريس", "نينتندو سويتش", "سماعة قيمنق", "كرسي احترافي", "يد تحكم"],
-            "إلكترونيات": ["شاشة سامسونج 4K", "ماك بوك إير", "ساعة آبل S9", "كاميرا سوني", "راوتر 5G", "طابعة ليزر"]
-        };
-
-        const allProducts = [];
-        // توليد 50 منتج فريد
-        for(let i=0; i<50; i++) {
-            const currentCat = cats[i % cats.length];
-            const nameList = productsData[currentCat];
-            const randomName = nameList[Math.floor(Math.random() * nameList.length)];
-            allProducts.push({
-                id: i,
-                name: randomName + " الفئة الممتازة",
-                price: Math.floor(Math.random() * 4500) + 150,
-                img: `https://picsum.photos/seed/${i+100}/300/300`,
-                category: currentCat
+        const productNames = ["آيفون 16 PRO", "ماك بوك إير M3", "كتاب برمجة PHP", "سماعة عازلة للصوت", "بلاي ستيشن 5", "ساعة ذكية Ultra", "رواية عالم صوفي", "شاشة 4K ذكية"];
+        const products = [];
+        for(let i=0; i<50; i++){
+            products.push({
+                name: productNames[i % productNames.length] + " (إصدار " + (i+1) + ")",
+                price: Math.floor(Math.random() * 5000) + 150,
+                cat: cats[i % cats.length],
+                img: `https://picsum.photos/seed/${i+20}/300/300`
             });
         }
 
-        function displayProducts(data) {
-            const container = document.getElementById('product-display');
-            container.innerHTML = data.map(p => `
+        function render(data) {
+            const grid = document.getElementById('productGrid');
+            if(data.length === 0) {
+                grid.innerHTML = "<p style='padding:20px;'>لا توجد نتائج تطابق بحثك.</p>";
+                return;
+            }
+            grid.innerHTML = data.map(p => `
                 <div class="product-card">
                     <img src="${p.img}" alt="${p.name}">
                     <div class="product-info">
-                        <small style="color: #007185">${p.category}</small>
+                        <small style="color: #007185">${p.cat}</small>
                         <h4>${p.name}</h4>
                         <p class="price">${p.price} ريال</p>
-                        <button class="btn-add" onclick="alert('تمت الإضافة للسلة بنجاح!')">إضافة للسلة</button>
+                        <button class="btn-amazon" onclick="alert('تمت الإضافة للسلة')">إضافة للسلة</button>
                     </div>
                 </div>
             `).join('');
         }
 
-        function filterProducts(category) {
-            const filtered = allProducts.filter(p => p.category === category);
-            document.getElementById('current-category-title').innerText = "قسم: " + category;
-            displayProducts(filtered);
-            window.scrollTo({ top: 600, behavior: 'smooth' });
+        function performSearch() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            const filtered = products.filter(p => p.name.toLowerCase().includes(query) || p.cat.includes(query));
+            document.getElementById('sectionTitle').innerText = "نتائج البحث: " + query;
+            render(filtered);
         }
 
-        // العرض الأولي لكل المنتجات
-        displayProducts(allProducts);
+        function filter(c) {
+            const filtered = products.filter(p => p.cat === c);
+            document.getElementById('sectionTitle').innerText = "قسم: " + c;
+            render(filtered);
+            window.scrollTo({ top: 400, behavior: 'smooth' });
+        }
+
+        // سلايدر التقييمات
+        const reviews = [
+            { text: "أفضل تجربة شراء مررت بها، التوصيل في جازان كان مذهلاً وسريعاً.", name: "أحمد المجرشي" },
+            { text: "الموقع سهل جداً في الاستخدام، والبحث عن المنتجات دقيق.", name: "سارة الفيفي" },
+            { text: "جودة المنتجات دائماً تفوق التوقعات، والأسعار مناسبة جداً.", name: "فيصل الحربي" },
+            { text: "خدمة العملاء في متجر جازان متعاونون جداً، شكراً لكم.", name: "ليلى حسن" }
+        ];
+        let rIdx = 0;
+        function updateReview() {
+            document.getElementById('reviewText').innerText = `"${reviews[rIdx].text}"`;
+            document.getElementById('reviewerName').innerText = "- " + reviews[rIdx].name;
+        }
+        function nextReview() { rIdx = (rIdx + 1) % reviews.length; updateReview(); }
+        function prevReview() { rIdx = (rIdx - 1 + reviews.length) % reviews.length; updateReview(); }
+
+        render(products);
     </script>
 </body>
 </html>
