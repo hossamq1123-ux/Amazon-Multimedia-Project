@@ -47,20 +47,17 @@
                 </ul>
             </div>
             <div class="footer-column">
-                <h3>روابط سريعة</h3>
+                <h3>حسابي</h3>
                 <ul>
-                    <li><a href="#">سياسة الإرجاع</a></li>
                     <li><a href="basket.html">عربة التسوق</a></li>
+                    <li><a href="#">طلباتي</a></li>
                 </ul>
             </div>
         </div>
-        <div class="footer-bottom">
-            <p>© 2026، أمازون جازان - مشروع الطالب حسام - جامعة جازان</p>
-        </div>
+        <div class="footer-bottom">© 2026، أمازون جازان - مشروع الطالب حسام - جامعة جازان</div>
     </footer>
 
     <script>
-        // المنتجات بصور حقيقية وروابط مباشرة تعمل
         const productsDB = [
             { id: 1, cat: "الكتب", name: "كتاب أساسيات PHP", price: 120, img: "https://m.media-amazon.com/images/I/51E6v8vKstL.jpg" },
             { id: 2, cat: "الكتب", name: "رواية عالم صوفي", price: 65, img: "https://m.media-amazon.com/images/I/81A+X50bExL.jpg" },
@@ -75,13 +72,12 @@
         order.forEach(catName => {
             let html = `<div class="category-section"><h2 class="section-title">${catName}</h2><div class="product-grid-two-cols">`;
             productsDB.filter(p => p.cat === catName).forEach(p => {
-                html += `
-                    <div class="product-card">
-                        <img src="${p.img}" alt="${p.name}">
-                        <h4>${p.name}</h4>
-                        <p class="price">${p.price} ريال</p>
-                        <button class="btn-amazon" onclick="addToCart(${p.id})">إضافة للسلة</button>
-                    </div>`;
+                html += `<div class="product-card">
+                    <img src="${p.img}">
+                    <h4>${p.name}</h4>
+                    <p class="price">${p.price} ريال</p>
+                    <button class="btn-amazon" onclick="addToCart(${p.id})">إضافة للسلة</button>
+                </div>`;
             });
             html += `</div></div>`;
             container.innerHTML += html;
@@ -91,7 +87,7 @@
             let cart = JSON.parse(localStorage.getItem('cart')) || [];
             cart.push(productsDB.find(p => p.id === id));
             localStorage.setItem('cart', JSON.stringify(cart));
-            alert('تمت الإضافة للسلة بنجاح!');
+            alert('تمت الإضافة للسلة');
         }
     </script>
 </body>
