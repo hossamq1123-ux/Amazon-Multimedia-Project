@@ -5,16 +5,23 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header><a href="index.html" style="color:white; text-decoration:none;">العودة للرئيسية</a></header>
+    <header><nav><a href="index.html">العودة للرئيسية</a></nav></header>
     <div class="container">
-        <div class="card">
-            <h2>اتصل بنا - جامعة جازان</h2>
-            <p>يمكنك التواصل معنا عبر النموذج التالي:</p>
-            <form>
-                <input type="text" placeholder="الاسم">
-                <textarea style="width: 95%; height: 100px; margin-bottom: 10px;" placeholder="رسالتك"></textarea>
-                <button type="button" onclick="alert('تم إرسال رسالتك بنجاح!')">إرسال</button>
-            </form>
+        <div class="footer-info" style="max-width: 700px; margin: auto;">
+            <h2 style="color:var(--amazon-blue)">مركز خدمة العملاء</h2>
+            <hr>
+            <div style="line-height: 2; margin: 20px 0;">
+                <p>📍 <strong>العنوان:</strong> جامعة جازان - كلية علوم الحاسب وتقنية المعلومات</p>
+                <p>📞 <strong>رقم التواصل:</strong> <a href="tel:+966500000000">+966 50 000 0000</a></p>
+                <p>📧 <strong>البريد الإلكتروني:</strong> <a href="mailto:support@jazanu.edu.sa">support@jazanu.edu.sa</a></p>
+                <p>⏰ <strong>ساعات العمل:</strong> من الأحد إلى الخميس (8 ص - 4 م)</p>
+            </div>
+            <div style="background: #eef; padding: 15px; border-radius: 8px;">
+                <h4>أرسل شكوى أو استفسار</h4>
+                <input type="text" placeholder="رقم الطلب (إن وجد)">
+                <textarea style="width:100%; height:100px; border-radius:8px; border:1px solid #ccc; padding:10px;" placeholder="اكتب تفاصيل استفسارك هنا..."></textarea>
+                <button class="btn-add">إرسال الطلب</button>
+            </div>
         </div>
     </div>
 </body>
