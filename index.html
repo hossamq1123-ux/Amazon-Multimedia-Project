@@ -10,14 +10,14 @@
         <div class="nav-main">
             <div class="logo" onclick="location.href='index.html'"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg"></div>
             <div class="search-container">
-                <input type="text" placeholder="ابحث عن منتجات...">
+                <input type="text" id="searchInput" placeholder="ابحث عن آيفون، كتب، إلكترونيات...">
                 <button class="search-btn">🔍</button>
             </div>
             <div class="user-nav"><small>مرحباً، حسام</small></div>
         </div>
         <nav class="nav-links">
             <a href="index.html">الرئيسية</a>
-            <a href="departments.html">الأقسام</a>
+            <a href="media.html">الوسائط (فيديو)</a>
             <a href="basket.html">السلة</a>
             <a href="social.html">التواصل الاجتماعي</a>
         </nav>
@@ -25,13 +25,16 @@
 
     <div class="container">
         <div id="categories-container"></div>
+        
         <div class="testimonial-section">
-            <div id="reviewBox">"تحميل التقييمات..."</div>
+            <div id="reviewBox">"جاري تحميل التقييمات..."</div>
             <div id="reviewerBox" style="font-weight:bold; color:#c45500; margin-top:10px;"></div>
         </div>
     </div>
 
-    <footer class="amazon-footer"><p>© 2026، أمازون جازان - تصميم حسام</p></footer>
+    <footer class="amazon-footer">
+        <p>© 2026، أمازون جازان - مشروع الطالب حسام - جامعة جازان</p>
+    </footer>
 
     <script>
         const productsDB = [
@@ -40,7 +43,7 @@
             { id: 3, cat: "الهواتف", name: "iPhone 16 Pro Max", price: 5699, img: "https://m.media-amazon.com/images/I/61H7R9uI7LL._AC_SL1500_.jpg" },
             { id: 4, cat: "الهواتف", name: "Samsung Galaxy S24 Ultra", price: 4499, img: "https://m.media-amazon.com/images/I/71WetsS696L._AC_SL1500_.jpg" },
             { id: 5, cat: "الألعاب", name: "Sony PlayStation 5 Slim", price: 2149, img: "https://m.media-amazon.com/images/I/41m7G7769LL._AC_SL1000_.jpg" },
-            { id: 6, cat: "الإلكترونيات", name: "TCL 65 Inch 4K TV", price: 1999, img: "https://m.media-amazon.com/images/I/71rI74D5fPL._AC_SL1500_.jpg" }
+            { id: 6, cat: "الإلكترونيات", name: "شاشة TCL 65 Inch 4K", price: 1999, img: "https://m.media-amazon.com/images/I/71rI74D5fPL._AC_SL1500_.jpg" }
         ];
 
         const order = ["الكتب", "الهواتف", "الألعاب", "الإلكترونيات"];
@@ -52,7 +55,7 @@
                 let html = `<div class="category-section"><h2 class="section-title">${catName}</h2><div class="product-grid-two-cols">`;
                 filtered.forEach(p => {
                     html += `<div class="product-card">
-                        <img src="${p.img}">
+                        <img src="${p.img}" onclick="location.href='media.html'">
                         <h4>${p.name}</h4>
                         <p class="price">${p.price} ريال</p>
                         <button class="btn-amazon" onclick="addToCart(${p.id})">إضافة للسلة</button>
@@ -68,11 +71,10 @@
             const product = productsDB.find(p => p.id === id);
             cart.push(product);
             localStorage.setItem('cart', JSON.stringify(cart));
-            alert('تم إضافة ' + product.name);
+            alert('تمت إضافة المنتج للسلة!');
         }
 
-        // التقييمات التلقائية
-        const reviews = [{t:"توصيل سريع لجازان!", n:"أحمد"}, {t:"أفضل أسعار للهواتف", n:"سارة"}];
+        const reviews = [{t:"أفضل متجر في جازان", n:"أحمد"}, {t:"الآيفون وصلني بسرعة", n:"سارة"}];
         let rIdx = 0;
         setInterval(() => {
             document.getElementById('reviewBox').innerText = `"${reviews[rIdx].t}"`;
