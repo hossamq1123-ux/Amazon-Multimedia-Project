@@ -2,26 +2,23 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <title>Amazon - Shopping Basket</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <h2>Amazon Clone - سلة المشتريات</h2>
-        <nav>
-            <a href="index.html">الرئيسية</a>
-            <a href="departments.html">الأقسام</a>
-            <a href="media.html">الوسائط</a>
-            <a href="basket.html">السلة</a>
-            <a href="login.html">تسجيل الدخول</a>
-        </nav>
-    </header>
-
+    <header><nav><a href="index.html">الرئيسية</a></nav></header>
     <div class="container">
-        <h2>سلة التسوق الخاصة بك</h2>
-        <div class="card" style="text-align: center; padding: 50px;">
-            <p>سلة المشتريات فارغة حالياً.</p>
-            <a href="index.html" style="color: #007185; text-decoration: none;">العودة للتسوق</a>
+        <h2>سلة المشتريات</h2>
+        <div class="card" id="cart-items">
+            <div style="display: flex; align-items: center; border-bottom: 1px solid #ddd; padding: 10px;">
+                <img src="https://picsum.photos/100/100?random=1" width="80" style="margin-left: 20px;">
+                <div>
+                    <h4>منتج تمت إضافته مؤخراً</h4>
+                    <p class="price">120 ريال</p>
+                    <small>الكمية: 1</small>
+                </div>
+            </div>
+            <h3 style="text-align: left; margin-top: 20px;">الإجمالي: 120 ريال</h3>
+            <button style="width: 100%; background: #f0c14b;">إتمام عملية الشراء</button>
         </div>
     </div>
 </body>
