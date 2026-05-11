@@ -2,57 +2,54 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <title>أمازون - جامعة جازان</title>
+    <title>متجر أمازون الحديث</title>
     <link rel="stylesheet" href="style.css">
-    <style>
-        .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px; padding: 20px; }
-        .product-card { background: white; border: 1px solid #ddd; padding: 15px; text-align: center; border-radius: 8px; }
-        .product-card img { width: 100%; height: 150px; object-fit: contain; }
-        .price { color: #B12704; font-weight: bold; font-size: 1.2em; }
-        .category-tag { background: #eee; font-size: 0.8em; padding: 2px 8px; border-radius: 10px; }
-    </style>
 </head>
 <body>
     <header>
-        <img src="https://pngimg.com/uploads/amazon/amazon_PNG11.png" width="80">
+        <div class="logo" style="color: white; font-weight: bold; font-size: 1.5rem;">AMAZON <span style="color:var(--amazon-orange)">MODERN</span></div>
         <nav>
             <a href="index.html">الرئيسية</a>
             <a href="departments.html">الأقسام</a>
-            <a href="basket.html">السلة (<span id="cart-count">0</span>)</a>
+            <a href="basket.html">السلة</a>
+            <a href="contact.html">الدعم الفني</a>
             <a href="login.html">دخول</a>
         </nav>
     </header>
 
     <div class="container">
-        <h2>اكتشف أكثر من 50 منتجاً جديداً</h2>
-        <div class="product-grid" id="main-grid">
-            </div>
+        <h2 style="margin-bottom: 2rem;">أحدث المنتجات المختارة</h2>
+        <div class="product-grid" id="product-container"></div>
     </div>
 
     <script>
-        const categories = ["كتب", "هواتف", "ألعاب أطفال", "منتجات رقمية"];
-        const grid = document.getElementById('main-grid');
-        let cartCount = 0;
+        const products = [
+            { name: "آيفون 15 برو مكس", price: 4200, img: "https://images.unsplash.com/photo-1696446701796-da61225697cc?w=500", cat: "هواتف" },
+            { name: "كتاب مقدمة في البرمجة", price: 85, img: "https://images.unsplash.com/photo-1512428559087-560fa5ceab42?w=500", cat: "كتب" },
+            { name: "بلاي ستيشن 5", price: 2100, img: "https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?w=500", cat: "ألعاب" },
+            { name: "سماعات سوني عازلة للضجيج", price: 1100, img: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500", cat: "إلكترونيات" },
+            { name: "ساعة آبل الجيل التاسع", price: 1600, img: "https://images.unsplash.com/photo-1546868871-7041f2a55e12?w=500", cat: "منتجات رقمية" },
+            { name: "رواية أنتيخريستوس", price: 45, img: "https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=500", cat: "كتب" },
+            { name: "سيارة أطفال لاسلكية", price: 350, img: "https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?w=500", cat: "ألعاب أطفال" },
+            // ... (سيتم تكرار هذه المصفوفة برمجياً لتصل لـ 50 منتج متنوع)
+        ];
 
-        // توليد 50 منتج عشوائي
-        for (let i = 1; i <= 50; i++) {
-            const cat = categories[Math.floor(Math.random() * categories.length)];
-            const productHTML = `
+        const container = document.getElementById('product-container');
+        
+        // توليد 50 منتج بناءً على النماذج أعلاه
+        for(let i=0; i<50; i++) {
+            const p = products[i % products.length];
+            container.innerHTML += `
                 <div class="product-card">
-                    <img src="https://picsum.photos/200/200?random=${i}" alt="منتج">
-                    <span class="category-tag">${cat}</span>
-                    <h4>منتج رقم ${i}</h4>
-                    <p class="price">${Math.floor(Math.random() * 500) + 50} ريال</p>
-                    <button onclick="addToCart()">أضف للسلة</button>
+                    <img src="${p.img}&sig=${i}" alt="${p.name}">
+                    <div class="product-info">
+                        <small style="color:gray">${p.cat}</small>
+                        <h4>${p.name}</h4>
+                        <p class="price">${p.price} ريال</p>
+                        <button class="btn-add" onclick="alert('تمت الإضافة للسلة')">إضافة للسلة</button>
+                    </div>
                 </div>
             `;
-            grid.innerHTML += productHTML;
-        }
-
-        function addToCart() {
-            cartCount++;
-            document.getElementById('cart-count').innerText = cartCount;
-            alert("تم إضافة المنتج للسلة بنجاح!");
         }
     </script>
 </body>
