@@ -24,7 +24,6 @@
         </div>
         <nav class="nav-links">
             <a href="index.html">الرئيسية</a>
-            <a href="departments.html">الأقسام</a>
             <a href="basket.html">السلة</a>
             <a href="social.html">التواصل الاجتماعي</a>
         </nav>
@@ -36,21 +35,18 @@
 
     <footer class="amazon-footer">
         <div class="footer-bottom">
-            <p>© 2026، أمازون جازان - مشروع الطالب حسام - جامعة جازان</p>
+            <p>© 2026، أمازون جازان - مشروع حسام - جامعة جازان</p>
         </div>
     </footer>
 
     <script>
-        // بيانات حقيقية 100% مع صور مباشرة تعمل
         const productsDB = [
-            { id: 1, cat: "الكتب", name: "كتاب أساسيات PHP الحديثة", price: 120, img: "https://m.media-amazon.com/images/I/51E6v8vKstL.jpg", desc: "تعلم بناء المواقع باستخدام PHP 8 و MySQL بشكل احترافي." },
-            { id: 2, cat: "الكتب", name: "رواية عالم صوفي - جوستاين غاردر", price: 65, img: "https://m.media-amazon.com/images/I/81A+X50bExL.jpg", desc: "واحدة من أشهر الروايات الفلسفية التي تُرجمت لأكثر من 60 لغة." },
-            { id: 3, cat: "الهواتف", name: "iPhone 16 Pro Max - تيتانيوم", price: 5699, img: "https://m.media-amazon.com/images/I/61H7R9uI7LL._AC_SL1500_.jpg", desc: "أحدث معالج A18 Pro، شاشة 6.9 بوصة، ونظام كاميرات سينمائي." },
-            { id: 4, cat: "الهواتف", name: "Samsung Galaxy S24 Ultra", price: 4499, img: "https://m.media-amazon.com/images/I/71WetsS696L._AC_SL1500_.jpg", desc: "كاميرا 200 ميجابكسل مع دعم كامل للذكاء الاصطناعي وقلم S-Pen." },
-            { id: 5, cat: "الألعاب", name: "Sony PlayStation 5 Slim", price: 2149, img: "https://m.media-amazon.com/images/I/41m7G7769LL._AC_SL1000_.jpg", desc: "النسخة الجديدة الأنحف، سعة 1 تيرا، تدعم دقة 4K ومعدل 120 إطار." },
-            { id: 6, cat: "الألعاب", name: "Nintendo Switch OLED - أبيض", price: 1399, img: "https://m.media-amazon.com/images/I/61m9v64N7PL._AC_SL1500_.jpg", desc: "شاشة OLED زاهية 7 بوصة وألوان غنية جداً." },
-            { id: 7, cat: "الإلكترونيات", name: "TCL 65 Inch 4K Google TV", price: 1999, img: "https://m.media-amazon.com/images/I/71rI74D5fPL._AC_SL1500_.jpg", desc: "شاشة ذكية فائقة الوضوح بدقة 4K مع تقنية HDR10." },
-            { id: 8, cat: "الإلكترونيات", name: "Apple MacBook Air M3", price: 4899, img: "https://m.media-amazon.com/images/I/71jG+e7roXL._AC_SL1500_.jpg", desc: "معالج M3 الجبار، بطارية تدوم 18 ساعة، وتصميم نحيف جداً." }
+            { id: 1, cat: "الكتب", name: "كتاب أساسيات PHP", price: 120, img: "https://m.media-amazon.com/images/I/51E6v8vKstL.jpg", desc: "تعلم البرمجة باحتراف." },
+            { id: 2, cat: "الكتب", name: "رواية عالم صوفي", price: 65, img: "https://m.media-amazon.com/images/I/81A+X50bExL.jpg", desc: "رواية فلسفية." },
+            { id: 3, cat: "الهواتف", name: "iPhone 16 Pro Max", price: 5699, img: "https://m.media-amazon.com/images/I/61H7R9uI7LL._AC_SL1500_.jpg", desc: "أحدث هواتف آبل." },
+            { id: 4, cat: "الهواتف", name: "Samsung Galaxy S24 Ultra", price: 4499, img: "https://m.media-amazon.com/images/I/71WetsS696L._AC_SL1500_.jpg", desc: "ذكاء اصطناعي فائق." },
+            { id: 5, cat: "الألعاب", name: "Sony PlayStation 5 Slim", price: 2149, img: "https://m.media-amazon.com/images/I/41m7G7769LL._AC_SL1000_.jpg", desc: "سرعة وأداء جبار." },
+            { id: 7, cat: "الإلكترونيات", name: "TCL 65 Inch 4K Google TV", price: 1999, img: "https://m.media-amazon.com/images/I/71rI74D5fPL._AC_SL1500_.jpg", desc: "شاشة ذكية سينمائية." }
         ];
 
         const order = ["الكتب", "الهواتف", "الألعاب", "الإلكترونيات"];
@@ -60,27 +56,30 @@
             const section = document.createElement('div');
             section.className = 'category-section';
             section.innerHTML = `<h2 class="section-title">${catName}</h2>`;
-            
-            // شبكة المنتجات (اثنين اثنين بجانب بعض)
             const grid = document.createElement('div');
             grid.className = 'product-grid-two-cols';
-
-            const filtered = productsDB.filter(p => p.cat === catName);
-            filtered.forEach(p => {
+            productsDB.filter(p => p.cat === catName).forEach(p => {
                 grid.innerHTML += `
-                    <div class="product-card" onclick="goToDetails(${p.id})">
-                        <img src="${p.img}" alt="${p.name}" onerror="this.src='https://via.placeholder.com/200?text=No+Image'">
+                    <div class="product-card">
+                        <img src="${p.img}" onclick="goToDetails(${p.id})">
                         <div class="product-info">
                             <h4>${p.name}</h4>
                             <p class="price">${p.price} ريال</p>
-                            <button class="btn-amazon">عرض التفاصيل والمواصفات</button>
+                            <button class="btn-amazon" onclick="addToCart(${p.id})">إضافة إلى السلة</button>
                         </div>
-                    </div>
-                `;
+                    </div>`;
             });
             section.appendChild(grid);
             container.appendChild(section);
         });
+
+        function addToCart(id) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const product = productsDB.find(p => p.id === id);
+            cart.push(product);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            alert('تم إضافة ' + product.name + ' إلى السلة بنجاح!');
+        }
 
         function goToDetails(id) {
             const product = productsDB.find(p => p.id === id);
