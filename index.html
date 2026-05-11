@@ -2,28 +2,22 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>أمازون جازان - الرئيسية</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
     <header>
         <div class="nav-main">
-            <div class="logo" onclick="location.href='index.html'">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon">
-            </div>
+            <div class="logo" onclick="location.href='index.html'"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg"></div>
             <div class="search-container">
-                <input type="text" id="searchInput" placeholder="ابحث عن آيفون، كتب، إلكترونيات...">
+                <input type="text" placeholder="ابحث عن منتجات...">
                 <button class="search-btn">🔍</button>
             </div>
-            <div class="user-nav">
-                <small>مرحباً، حسام</small>
-                <div style="font-weight: bold;">الحساب والقوائم</div>
-            </div>
+            <div class="user-nav"><small>مرحباً، حسام</small></div>
         </div>
         <nav class="nav-links">
             <a href="index.html">الرئيسية</a>
+            <a href="departments.html">الأقسام</a>
             <a href="basket.html">السلة</a>
             <a href="social.html">التواصل الاجتماعي</a>
         </nav>
@@ -31,46 +25,42 @@
 
     <div class="container">
         <div id="categories-container"></div>
+        <div class="testimonial-section">
+            <div id="reviewBox">"تحميل التقييمات..."</div>
+            <div id="reviewerBox" style="font-weight:bold; color:#c45500; margin-top:10px;"></div>
+        </div>
     </div>
 
-    <footer class="amazon-footer">
-        <div class="footer-bottom">
-            <p>© 2026، أمازون جازان - مشروع حسام - جامعة جازان</p>
-        </div>
-    </footer>
+    <footer class="amazon-footer"><p>© 2026، أمازون جازان - تصميم حسام</p></footer>
 
     <script>
         const productsDB = [
-            { id: 1, cat: "الكتب", name: "كتاب أساسيات PHP", price: 120, img: "https://m.media-amazon.com/images/I/51E6v8vKstL.jpg", desc: "تعلم البرمجة باحتراف." },
-            { id: 2, cat: "الكتب", name: "رواية عالم صوفي", price: 65, img: "https://m.media-amazon.com/images/I/81A+X50bExL.jpg", desc: "رواية فلسفية." },
-            { id: 3, cat: "الهواتف", name: "iPhone 16 Pro Max", price: 5699, img: "https://m.media-amazon.com/images/I/61H7R9uI7LL._AC_SL1500_.jpg", desc: "أحدث هواتف آبل." },
-            { id: 4, cat: "الهواتف", name: "Samsung Galaxy S24 Ultra", price: 4499, img: "https://m.media-amazon.com/images/I/71WetsS696L._AC_SL1500_.jpg", desc: "ذكاء اصطناعي فائق." },
-            { id: 5, cat: "الألعاب", name: "Sony PlayStation 5 Slim", price: 2149, img: "https://m.media-amazon.com/images/I/41m7G7769LL._AC_SL1000_.jpg", desc: "سرعة وأداء جبار." },
-            { id: 7, cat: "الإلكترونيات", name: "TCL 65 Inch 4K Google TV", price: 1999, img: "https://m.media-amazon.com/images/I/71rI74D5fPL._AC_SL1500_.jpg", desc: "شاشة ذكية سينمائية." }
+            { id: 1, cat: "الكتب", name: "كتاب أساسيات PHP", price: 120, img: "https://m.media-amazon.com/images/I/51E6v8vKstL.jpg" },
+            { id: 2, cat: "الكتب", name: "رواية عالم صوفي", price: 65, img: "https://m.media-amazon.com/images/I/81A+X50bExL.jpg" },
+            { id: 3, cat: "الهواتف", name: "iPhone 16 Pro Max", price: 5699, img: "https://m.media-amazon.com/images/I/61H7R9uI7LL._AC_SL1500_.jpg" },
+            { id: 4, cat: "الهواتف", name: "Samsung Galaxy S24 Ultra", price: 4499, img: "https://m.media-amazon.com/images/I/71WetsS696L._AC_SL1500_.jpg" },
+            { id: 5, cat: "الألعاب", name: "Sony PlayStation 5 Slim", price: 2149, img: "https://m.media-amazon.com/images/I/41m7G7769LL._AC_SL1000_.jpg" },
+            { id: 6, cat: "الإلكترونيات", name: "TCL 65 Inch 4K TV", price: 1999, img: "https://m.media-amazon.com/images/I/71rI74D5fPL._AC_SL1500_.jpg" }
         ];
 
         const order = ["الكتب", "الهواتف", "الألعاب", "الإلكترونيات"];
         const container = document.getElementById('categories-container');
 
         order.forEach(catName => {
-            const section = document.createElement('div');
-            section.className = 'category-section';
-            section.innerHTML = `<h2 class="section-title">${catName}</h2>`;
-            const grid = document.createElement('div');
-            grid.className = 'product-grid-two-cols';
-            productsDB.filter(p => p.cat === catName).forEach(p => {
-                grid.innerHTML += `
-                    <div class="product-card">
-                        <img src="${p.img}" onclick="goToDetails(${p.id})">
-                        <div class="product-info">
-                            <h4>${p.name}</h4>
-                            <p class="price">${p.price} ريال</p>
-                            <button class="btn-amazon" onclick="addToCart(${p.id})">إضافة إلى السلة</button>
-                        </div>
+            const filtered = productsDB.filter(p => p.cat === catName);
+            if(filtered.length > 0) {
+                let html = `<div class="category-section"><h2 class="section-title">${catName}</h2><div class="product-grid-two-cols">`;
+                filtered.forEach(p => {
+                    html += `<div class="product-card">
+                        <img src="${p.img}">
+                        <h4>${p.name}</h4>
+                        <p class="price">${p.price} ريال</p>
+                        <button class="btn-amazon" onclick="addToCart(${p.id})">إضافة للسلة</button>
                     </div>`;
-            });
-            section.appendChild(grid);
-            container.appendChild(section);
+                });
+                html += `</div></div>`;
+                container.innerHTML += html;
+            }
         });
 
         function addToCart(id) {
@@ -78,14 +68,17 @@
             const product = productsDB.find(p => p.id === id);
             cart.push(product);
             localStorage.setItem('cart', JSON.stringify(cart));
-            alert('تم إضافة ' + product.name + ' إلى السلة بنجاح!');
+            alert('تم إضافة ' + product.name);
         }
 
-        function goToDetails(id) {
-            const product = productsDB.find(p => p.id === id);
-            localStorage.setItem('selectedProduct', JSON.stringify(product));
-            window.location.href = 'details.html';
-        }
+        // التقييمات التلقائية
+        const reviews = [{t:"توصيل سريع لجازان!", n:"أحمد"}, {t:"أفضل أسعار للهواتف", n:"سارة"}];
+        let rIdx = 0;
+        setInterval(() => {
+            document.getElementById('reviewBox').innerText = `"${reviews[rIdx].t}"`;
+            document.getElementById('reviewerBox').innerText = `- ${reviews[rIdx].n}`;
+            rIdx = (rIdx + 1) % reviews.length;
+        }, 3000);
     </script>
 </body>
 </html>
