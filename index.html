@@ -7,14 +7,15 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
     <header>
         <div class="nav-main">
             <div class="logo" onclick="location.href='index.html'">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon">
             </div>
             <div class="search-container">
-                <input type="text" id="searchInput" placeholder="ابحث في المتجر...">
-                <button class="search-btn" onclick="performSearch()">🔍</button>
+                <input type="text" id="searchInput" placeholder="ابحث عن آيفون، كتب، إلكترونيات...">
+                <button class="search-btn">🔍</button>
             </div>
             <div class="user-nav">
                 <small>مرحباً، حسام</small>
@@ -23,6 +24,7 @@
         </div>
         <nav class="nav-links">
             <a href="index.html">الرئيسية</a>
+            <a href="departments.html">الأقسام</a>
             <a href="basket.html">السلة</a>
             <a href="social.html">التواصل الاجتماعي</a>
         </nav>
@@ -30,42 +32,25 @@
 
     <div class="container">
         <div id="categories-container"></div>
-
-        <section class="testimonial-section">
-            <div class="testimonial-header">
-                <h2>ماذا يقول عملاؤنا؟</h2>
-                <div class="title-underline"></div>
-            </div>
-            <div class="slider-wrapper">
-                <button class="slide-btn next" onclick="changeReview(1)">&#10094;</button>
-                <div class="testimonial-card">
-                    <div class="quote-icon">"</div>
-                    <div id="reviewBox" class="review-text">تحميل التقييمات...</div>
-                    <div id="reviewerBox" class="reviewer-name"></div>
-                </div>
-                <button class="slide-btn prev" onclick="changeReview(-1)">&#10095;</button>
-            </div>
-        </section>
     </div>
 
     <footer class="amazon-footer">
-        <div class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">العودة إلى الأعلى</div>
         <div class="footer-bottom">
             <p>© 2026، أمازون جازان - مشروع الطالب حسام - جامعة جازان</p>
         </div>
     </footer>
 
     <script>
-        // قاعدة بيانات ثابتة (الأسعار والصور لا تتغير)
+        // بيانات حقيقية 100% مع صور مباشرة تعمل
         const productsDB = [
-            { id: 1, cat: "الكتب", name: "كتاب أساسيات PHP", price: 85, img: "https://m.media-amazon.com/images/I/41mS+o4095L._AC_SY780_.jpg", desc: "تعلم برمجة المواقع باستخدام PHP." },
-            { id: 2, cat: "الكتب", name: "رواية عالم صوفي", price: 55, img: "https://m.media-amazon.com/images/I/41-T1S-KxlL._AC_SY1000_.jpg", desc: "رحلة في عالم الفلسفة." },
-            { id: 3, cat: "الهواتف", name: "iPhone 16 Pro Max", price: 5499, img: "https://m.media-amazon.com/images/I/61f43c3P6dL._AC_SL1500_.jpg", desc: "أحدث معالج A18 Pro وكاميرا احترافية." },
-            { id: 4, cat: "الهواتف", name: "Samsung Galaxy S24 Ultra", price: 4199, img: "https://m.media-amazon.com/images/I/71WetsS696L._AC_SL1500_.jpg", desc: "شاشة جبارة وذكاء اصطناعي متطور." },
-            { id: 5, cat: "الألعاب", name: "PlayStation 5 Console", price: 2299, img: "https://m.media-amazon.com/images/I/5105Xzko79L._AC_SL1500_.jpg", desc: "جهاز ألعاب الجيل الجديد." },
-            { id: 6, cat: "الألعاب", name: "نينتندو سويتش OLED", price: 1450, img: "https://m.media-amazon.com/images/I/61m9v64N7PL._AC_SL1500_.jpg", desc: "ألعاب ممتعة في أي مكان." },
-            { id: 7, cat: "الإلكترونيات", name: "شاشة TCL 65 Inch 4K", price: 1899, img: "https://m.media-amazon.com/images/I/71u9iB6YpYL._AC_SL1500_.jpg", desc: "تجربة مشاهدة سينمائية بدقة 4K." },
-            { id: 8, cat: "الإلكترونيات", name: "ماك بوك إير M3", price: 4599, img: "https://m.media-amazon.com/images/I/71jG+e7roXL._AC_SL1500_.jpg", desc: "خفة في الوزن وقوة في الأداء." }
+            { id: 1, cat: "الكتب", name: "كتاب أساسيات PHP الحديثة", price: 120, img: "https://m.media-amazon.com/images/I/51E6v8vKstL.jpg", desc: "تعلم بناء المواقع باستخدام PHP 8 و MySQL بشكل احترافي." },
+            { id: 2, cat: "الكتب", name: "رواية عالم صوفي - جوستاين غاردر", price: 65, img: "https://m.media-amazon.com/images/I/81A+X50bExL.jpg", desc: "واحدة من أشهر الروايات الفلسفية التي تُرجمت لأكثر من 60 لغة." },
+            { id: 3, cat: "الهواتف", name: "iPhone 16 Pro Max - تيتانيوم", price: 5699, img: "https://m.media-amazon.com/images/I/61H7R9uI7LL._AC_SL1500_.jpg", desc: "أحدث معالج A18 Pro، شاشة 6.9 بوصة، ونظام كاميرات سينمائي." },
+            { id: 4, cat: "الهواتف", name: "Samsung Galaxy S24 Ultra", price: 4499, img: "https://m.media-amazon.com/images/I/71WetsS696L._AC_SL1500_.jpg", desc: "كاميرا 200 ميجابكسل مع دعم كامل للذكاء الاصطناعي وقلم S-Pen." },
+            { id: 5, cat: "الألعاب", name: "Sony PlayStation 5 Slim", price: 2149, img: "https://m.media-amazon.com/images/I/41m7G7769LL._AC_SL1000_.jpg", desc: "النسخة الجديدة الأنحف، سعة 1 تيرا، تدعم دقة 4K ومعدل 120 إطار." },
+            { id: 6, cat: "الألعاب", name: "Nintendo Switch OLED - أبيض", price: 1399, img: "https://m.media-amazon.com/images/I/61m9v64N7PL._AC_SL1500_.jpg", desc: "شاشة OLED زاهية 7 بوصة وألوان غنية جداً." },
+            { id: 7, cat: "الإلكترونيات", name: "TCL 65 Inch 4K Google TV", price: 1999, img: "https://m.media-amazon.com/images/I/71rI74D5fPL._AC_SL1500_.jpg", desc: "شاشة ذكية فائقة الوضوح بدقة 4K مع تقنية HDR10." },
+            { id: 8, cat: "الإلكترونيات", name: "Apple MacBook Air M3", price: 4899, img: "https://m.media-amazon.com/images/I/71jG+e7roXL._AC_SL1500_.jpg", desc: "معالج M3 الجبار، بطارية تدوم 18 ساعة، وتصميم نحيف جداً." }
         ];
 
         const order = ["الكتب", "الهواتف", "الألعاب", "الإلكترونيات"];
@@ -75,18 +60,23 @@
             const section = document.createElement('div');
             section.className = 'category-section';
             section.innerHTML = `<h2 class="section-title">${catName}</h2>`;
+            
+            // شبكة المنتجات (اثنين اثنين بجانب بعض)
             const grid = document.createElement('div');
-            grid.className = 'product-grid';
-            productsDB.filter(p => p.cat === catName).forEach(p => {
+            grid.className = 'product-grid-two-cols';
+
+            const filtered = productsDB.filter(p => p.cat === catName);
+            filtered.forEach(p => {
                 grid.innerHTML += `
                     <div class="product-card" onclick="goToDetails(${p.id})">
-                        <img src="${p.img}">
+                        <img src="${p.img}" alt="${p.name}" onerror="this.src='https://via.placeholder.com/200?text=No+Image'">
                         <div class="product-info">
                             <h4>${p.name}</h4>
                             <p class="price">${p.price} ريال</p>
-                            <button class="btn-amazon">عرض التفاصيل</button>
+                            <button class="btn-amazon">عرض التفاصيل والمواصفات</button>
                         </div>
-                    </div>`;
+                    </div>
+                `;
             });
             section.appendChild(grid);
             container.appendChild(section);
@@ -97,19 +87,6 @@
             localStorage.setItem('selectedProduct', JSON.stringify(product));
             window.location.href = 'details.html';
         }
-
-        const reviews = [
-            { text: "سرعة التوصيل مذهلة، طلبت الآيفون ووصلني في نفس اليوم بجازان!", name: "محمد العتودي" },
-            { text: "خدمة العملاء محترفة جداً، ساعدوني في استبدال المنتج بكل سهولة.", name: "ليلى القحطاني" },
-            { text: "الأسعار منافسة جداً، أنصح به لطلاب الجامعة.", name: "خالد صميلي" }
-        ];
-        let rIdx = 0;
-        function changeReview(d) {
-            rIdx = (rIdx + d + reviews.length) % reviews.length;
-            document.getElementById('reviewBox').innerText = `"${reviews[rIdx].text}"`;
-            document.getElementById('reviewerBox').innerText = `- ${reviews[rIdx].name}`;
-        }
-        changeReview(0);
     </script>
 </body>
 </html>
