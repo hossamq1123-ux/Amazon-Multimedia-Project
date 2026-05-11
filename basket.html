@@ -2,76 +2,66 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <title>عربة التسوق - أمازون جازان</title>
+    <title>السلة - أمازون جازان</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
         <div class="nav-main">
-            <div class="logo" onclick="location.href='index.html'"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" width="100"></div>
-            <h2 style="margin-right: 20px;">عربة التسوق</h2>
+            <div class="logo" onclick="location.href='index.html'"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg"></div>
+            <nav class="nav-links">
+                <a href="index.html">الرئيسية</a>
+                <a href="basket.html">السلة</a>
+            </nav>
         </div>
     </header>
 
-    <div class="container" style="display: grid; grid-template-columns: 3fr 1fr; gap: 20px; margin-top: 30px;">
-        
-        <div style="background: white; padding: 25px; border-radius: 8px; border: 1px solid #ddd;">
-            <h2 style="border-bottom: 1px solid #eee; padding-bottom: 15px; margin-bottom: 20px;">عربة التسوق</h2>
-            <div id="cartItemsContainer">
-                </div>
+    <div class="container" style="display: grid; grid-template-columns: 3fr 1fr; gap: 20px;">
+        <div style="background: white; padding: 20px; border-radius: 8px; border: 1px solid #ddd;">
+            <h2>عربة التسوق</h2>
+            <div id="cartContainer" style="margin-top:20px;"></div>
         </div>
-
-        <div style="background: white; padding: 25px; border-radius: 8px; border: 1px solid #ddd; height: fit-content;">
-            <p style="font-size: 18px; margin-bottom: 15px;">المجموع الفرعي (<span id="itemsCount">0</span> منتج): <br> <b style="font-size: 22px;" id="totalPrice">0</b> <b>ريال</b></p>
-            <div style="margin-bottom: 20px;">
-                <input type="checkbox"> <small>هذا الطلب يحتوي على هدية</small>
-            </div>
-            <button class="btn-amazon" onclick="location.href='checkout.html'">تابع عملية الشراء</button>
+        <div style="background: white; padding: 20px; border-radius: 8px; border: 1px solid #ddd; height: fit-content;">
+            <p>المجموع (<span id="count">0</span> منتج): <br><b style="font-size:22px;" id="total">0</b> ريال</p>
+            <button class="btn-amazon" style="margin-top:20px;" onclick="location.href='checkout.html'">تابع عملية الشراء</button>
         </div>
     </div>
 
     <script>
-        function displayCart() {
+        function loadCart() {
             const cart = JSON.parse(localStorage.getItem('cart')) || [];
-            const container = document.getElementById('cartItemsContainer');
-            const totalElt = document.getElementById('totalPrice');
-            const countElt = document.getElementById('itemsCount');
-            
-            if (cart.length === 0) {
-                container.innerHTML = "<h4>سلة التسوق فارغة حالياً.</h4>";
-                totalElt.innerText = "0";
-                countElt.innerText = "0";
+            const container = document.getElementById('cartContainer');
+            let total = 0;
+
+            if(cart.length === 0) {
+                container.innerHTML = "<h4>السلة فارغة</h4>";
                 return;
             }
 
-            let total = 0;
-            container.innerHTML = cart.map((item, index) => {
+            container.innerHTML = cart.map((item, i) => {
                 total += item.price;
-                return `
-                <div style="display: flex; gap: 20px; padding: 20px 0; border-bottom: 1px solid #eee; align-items: center;">
-                    <img src="${item.img}" width="120" style="object-fit: contain;">
-                    <div style="flex-grow: 1;">
-                        <h3 style="color: #007185;">${item.name}</h3>
-                        <p style="color: green; font-size: 14px;">متوفر في المخزون</p>
-                        <p style="font-size: 12px; color: #555;">مؤهل للشحن المجاني لطلاب جازان</p>
-                        <button onclick="removeItem(${index})" style="background:none; border:none; color:#007185; cursor:pointer; padding:0; margin-top:10px;">حذف من السلة</button>
+                return `<div style="display:flex; gap:20px; padding:15px; border-bottom:1px solid #eee; align-items:center;">
+                    <img src="${item.img}" width="80">
+                    <div style="flex:1;">
+                        <h4 style="color:#007185;">${item.name}</h4>
+                        <p style="color:green; font-size:12px;">متوفر</p>
+                        <button onclick="del(${i})" style="color:#007185; border:none; background:none; cursor:pointer;">حذف</button>
                     </div>
-                    <div style="font-weight: bold; font-size: 20px;">${item.price} ريال</div>
+                    <div style="font-weight:bold;">${item.price} ريال</div>
                 </div>`;
             }).join('');
 
-            totalElt.innerText = total.toLocaleString();
-            countElt.innerText = cart.length;
+            document.getElementById('total').innerText = total.toLocaleString();
+            document.getElementById('count').innerText = cart.length;
         }
 
-        function removeItem(index) {
-            let cart = JSON.parse(localStorage.getItem('cart')) || [];
-            cart.splice(index, 1);
+        function del(i) {
+            let cart = JSON.parse(localStorage.getItem('cart'));
+            cart.splice(i, 1);
             localStorage.setItem('cart', JSON.stringify(cart));
-            displayCart();
+            loadCart();
         }
-
-        displayCart();
+        loadCart();
     </script>
 </body>
 </html>
