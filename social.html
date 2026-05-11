@@ -5,15 +5,24 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header><a href="index.html" style="color:white; text-decoration:none;">العودة للرئيسية</a></header>
+    <header>
+        <div class="nav-main">
+            <div class="logo" onclick="location.href='index.html'"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg"></div>
+            <div style="flex-grow: 1; text-align: center; font-size: 22px; font-weight: bold;">قنوات التواصل الاجتماعي</div>
+        </div>
+        <nav class="nav-links"><a href="index.html">العودة للرئيسية</a></nav>
+    </header>
+
     <div class="container">
-        <div class="card" style="text-align: center;">
-            <h2>تابعنا على وسائل التواصل</h2>
-            <div style="margin-top: 20px;">
-                <a href="https://twitter.com/JazanUniversity" target="_blank" style="margin: 0 15px; text-decoration: none;">Twitter (X)</a>
-                <a href="https://instagram.com" target="_blank" style="margin: 0 15px; text-decoration: none;">Instagram</a>
-            </div>
+        <div class="social-grid">
+            <a href="#" class="social-card tw"><h1>𝕏</h1><h3>X (Twitter)</h3><p>تابع آخر أخبار التقنية والعروض</p></a>
+            <a href="#" class="social-card inst"><h1>📸</h1><h3>Instagram</h3><p>شاهد أحدث إصدارات آيفون 16</p></a>
+            <a href="#" class="social-card fb"><h1>📘</h1><h3>Facebook</h3><p>انضم لمجتمعنا التفاعلي</p></a>
         </div>
     </div>
+
+    <footer class="amazon-footer">
+        <div class="footer-bottom"><p>© 2026، أمازون جازان - تصميم الطالب حسام</p></div>
+    </footer>
 </body>
 </html>
