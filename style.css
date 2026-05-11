@@ -1,7 +1,9 @@
-body { font-family: Arial, sans-serif; margin: 0; background-color: #f3f3f3; }
-header { background-color: #232f3e; padding: 10px 20px; color: white; }
-nav a { color: white; margin-right: 15px; text-decoration: none; }
-.container { padding: 20px; }
-.card { background: white; padding: 15px; margin: 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-button { background-color: #febd69; border: none; padding: 10px 20px; cursor: pointer; border-radius: 5px; }
-input { display: block; width: 100%; margin: 10px 0; padding: 10px; }
+body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; background-color: #f3f3f3; }
+header { background-color: #232f3e; padding: 15px; color: white; text-align: center; }
+nav a { color: white; margin: 0 10px; text-decoration: none; font-weight: bold; }
+nav a:hover { color: #febd69; }
+.container { padding: 20px; max-width: 1000px; margin: auto; }
+.card { background: white; padding: 20px; margin: 15px 0; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+button { background-color: #ffd814; border: 1px solid #fcd200; padding: 10px 20px; cursor: pointer; border-radius: 20px; font-weight: bold; }
+button:hover { background-color: #f7ca00; }
+input { display: block; width: 95%; margin: 15px 0; padding: 12px; border: 1px solid #a6a6a6; border-radius: 3px; }
