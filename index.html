@@ -2,54 +2,76 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <title>متجر أمازون الحديث</title>
+    <title>أمازون جازان - الرئيسية</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
-        <div class="logo" style="color: white; font-weight: bold; font-size: 1.5rem;">AMAZON <span style="color:var(--amazon-orange)">MODERN</span></div>
+        <div style="color: white; font-weight: bold; font-size: 1.5rem;">AMAZON <span style="color:var(--amazon-orange)">JAZAN</span></div>
         <nav>
             <a href="index.html">الرئيسية</a>
             <a href="departments.html">الأقسام</a>
             <a href="basket.html">السلة</a>
-            <a href="contact.html">الدعم الفني</a>
+            <a href="contact.html">اتصل بنا</a>
             <a href="login.html">دخول</a>
         </nav>
     </header>
 
     <div class="container">
-        <h2 style="margin-bottom: 2rem;">أحدث المنتجات المختارة</h2>
-        <div class="product-grid" id="product-container"></div>
+        <h2 style="margin-bottom: 2rem; border-right: 5px solid var(--amazon-orange); padding-right: 15px;">أحدث العروض المختارة</h2>
+        <div class="product-grid" id="product-list"></div>
     </div>
+
+    <section class="testimonials-section">
+        <div class="container">
+            <h2 style="text-align: center; color: var(--amazon-orange); margin-bottom: 40px;">آراء عملائنا في جازان</h2>
+            <div class="testimonial-container">
+                <div class="testimonial-card">
+                    <img src="https://i.pravatar.cc/150?u=a" alt="User">
+                    <span style="display:block; font-weight:bold;">أحمد يحيى</span>
+                    <p style="font-style:italic; font-size:0.9rem;">"توصيل سريع جداً لصبيا والمنتجات أصلية."</p>
+                </div>
+                <div class="testimonial-card">
+                    <img src="https://i.pravatar.cc/150?u=b" alt="User">
+                    <span style="display:block; font-weight:bold;">نورة علي</span>
+                    <p style="font-style:italic; font-size:0.9rem;">"خدمة العملاء ممتازة والأسعار منافسة جداً."</p>
+                </div>
+                <div class="testimonial-card">
+                    <img src="https://i.pravatar.cc/150?u=c" alt="User">
+                    <span style="display:block; font-weight:bold;">سلطان الفيفي</span>
+                    <p style="font-style:italic; font-size:0.9rem;">"أفضل متجر إلكتروني يوفر مستلزمات الجامعة."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>مشروع مادة تطبيقات الوسائط المتعددة - جامعة جازان © 2026</p>
+        <p>📧 support@jazan-amazon.com | 📞 +966 50 123 4567</p>
+    </footer>
 
     <script>
         const products = [
-            { name: "آيفون 15 برو مكس", price: 4200, img: "https://images.unsplash.com/photo-1696446701796-da61225697cc?w=500", cat: "هواتف" },
-            { name: "كتاب مقدمة في البرمجة", price: 85, img: "https://images.unsplash.com/photo-1512428559087-560fa5ceab42?w=500", cat: "كتب" },
-            { name: "بلاي ستيشن 5", price: 2100, img: "https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?w=500", cat: "ألعاب" },
-            { name: "سماعات سوني عازلة للضجيج", price: 1100, img: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500", cat: "إلكترونيات" },
-            { name: "ساعة آبل الجيل التاسع", price: 1600, img: "https://images.unsplash.com/photo-1546868871-7041f2a55e12?w=500", cat: "منتجات رقمية" },
-            { name: "رواية أنتيخريستوس", price: 45, img: "https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=500", cat: "كتب" },
-            { name: "سيارة أطفال لاسلكية", price: 350, img: "https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?w=500", cat: "ألعاب أطفال" },
-            // ... (سيتم تكرار هذه المصفوفة برمجياً لتصل لـ 50 منتج متنوع)
+            { name: "آيفون 16 برو", price: 4299, img: "https://images.unsplash.com/photo-1696446701796-da61225697cc?w=500", cat: "هواتف" },
+            { name: "لابتوب ماك بوك إير", price: 3800, img: "https://images.unsplash.com/photo-1517336712468-061118277553?w=500", cat: "إلكترونيات" },
+            { name: "رواية عالم صوفي", price: 65, img: "https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=500", cat: "كتب" },
+            { name: "كاميرا سوني A7", price: 6500, img: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=500", cat: "رقمي" },
+            { name: "مجموعة ألعاب تركيب", price: 120, img: "https://images.unsplash.com/photo-1587654711464-3e3998b5329f?w=500", cat: "ألعاب أطفال" }
         ];
 
-        const container = document.getElementById('product-container');
-        
-        // توليد 50 منتج بناءً على النماذج أعلاه
+        const container = document.getElementById('product-list');
         for(let i=0; i<50; i++) {
             const p = products[i % products.length];
             container.innerHTML += `
                 <div class="product-card">
                     <img src="${p.img}&sig=${i}" alt="${p.name}">
                     <div class="product-info">
-                        <small style="color:gray">${p.cat}</small>
-                        <h4>${p.name}</h4>
+                        <small>${p.cat}</small>
+                        <h4>${p.name} #${i+1}</h4>
                         <p class="price">${p.price} ريال</p>
                         <button class="btn-add" onclick="alert('تمت الإضافة للسلة')">إضافة للسلة</button>
                     </div>
-                </div>
-            `;
+                </div>`;
         }
     </script>
 </body>
