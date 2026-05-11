@@ -5,21 +5,38 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header><nav><a href="index.html">الرئيسية</a></nav></header>
+    <header>
+        <div class="nav-main">
+            <div class="logo" onclick="location.href='index.html'"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg"></div>
+        </div>
+    </header>
+
     <div class="container">
-        <h2>سلة المشتريات</h2>
-        <div class="card" id="cart-items">
-            <div style="display: flex; align-items: center; border-bottom: 1px solid #ddd; padding: 10px;">
-                <img src="https://picsum.photos/100/100?random=1" width="80" style="margin-left: 20px;">
-                <div>
-                    <h4>منتج تمت إضافته مؤخراً</h4>
-                    <p class="price">120 ريال</p>
-                    <small>الكمية: 1</small>
+        <div style="display: grid; grid-template-columns: 3fr 1fr; gap: 20px;">
+            <div style="background: white; padding: 20px; border-radius: 4px;">
+                <h2 style="border-bottom: 1px solid #ddd; padding-bottom: 10px;">عربة التسوق</h2>
+                <div style="display: flex; gap: 20px; padding: 20px 0; border-bottom: 1px solid #eee;">
+                    <img src="https://picsum.photos/seed/cart/150/150" style="border-radius: 4px;">
+                    <div>
+                        <h4 style="color: #007185; font-size: 18px;">آيفون 16 برو - تيتانيوم أسود</h4>
+                        <p style="color: green; font-size: 12px; margin: 5px 0;">متوفر في المخزون</p>
+                        <p style="font-weight: bold; font-size: 20px; margin-top: 10px;">4,200 ريال</p>
+                        <div style="margin-top: 10px;">
+                            <select style="padding: 5px; background: #f0f2f2; border-radius: 5px;"><option>الكمية: 1</option></select>
+                            <span style="margin-right: 15px; color: #007185; cursor: pointer; font-size: 12px;">حذف</span>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <h3 style="text-align: left; margin-top: 20px;">الإجمالي: 120 ريال</h3>
-            <button style="width: 100%; background: #f0c14b;">إتمام عملية الشراء</button>
+            <div style="background: white; padding: 20px; border-radius: 4px; height: fit-content; text-align: center;">
+                <p style="font-size: 18px;">المجموع الفرعي (منتج واحد): <b>4,200 ريال</b></p>
+                <button class="btn-amazon" style="margin-top: 20px; font-size: 16px; padding: 12px;">تابع عملية الشراء</button>
+            </div>
         </div>
     </div>
+
+    <footer class="amazon-footer">
+        <div class="footer-bottom">© 2026، أمازون جازان - تصميم المجموعة رقم 1</div>
+    </footer>
 </body>
 </html>
