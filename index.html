@@ -28,286 +28,124 @@
             <a href="basket.html">السلة</a>
             <a href="contact.html">اتصل بنا</a>
             <a href="social.html">التواصل الاجتماعي</a>
-
         </nav>
-
     </header>
-
-
-
     <div class="container">
-
-        
-
         <div class="dept-quick-nav">
-
             <div class="dept-card" onclick="filter('كتب')"><h3>الكتب</h3><p>تصفح الآن</p></div>
-
             <div class="dept-card" onclick="filter('هواتف')"><h3>الهواتف</h3><p>تصفح الآن</p></div>
-
             <div class="dept-card" onclick="filter('ألعاب')"><h3>الألعاب</h3><p>تصفح الآن</p></div>
-
             <div class="dept-card" onclick="filter('إلكترونيات')"><h3>الإلكترونيات</h3><p>تصفح الآن</p></div>
-
         </div>
-
-
-
         <h2 id="sectionTitle" class="section-title">أحدث المنتجات المختارة</h2>
-
         <div class="product-grid" id="productGrid"></div>
-
-
-
         <section class="testimonial-section">
-
             <div class="testimonial-header">
-
                 <h2>ماذا يقول عملاؤنا؟</h2>
-
                 <div class="title-underline"></div>
-
             </div>
-
-            
-
             <div class="slider-wrapper">
-
                 <button class="slide-btn next" onclick="changeReview(1)">&#10094;</button>
-
-                
-
                 <div class="testimonial-card">
-
                     <div class="quote-icon">"</div>
-
                     <div id="reviewBox" class="review-text">تحميل التقييمات...</div>
-
                     <div id="reviewerBox" class="reviewer-name"></div>
-
                 </div>
-
-                
-
                 <button class="slide-btn prev" onclick="changeReview(-1)">&#10095;</button>
-
             </div>
-
         </section>
-
-
-
     </div>
-
-
-
     <footer class="amazon-footer">
-
         <div class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">العودة إلى الأعلى</div>
-
         <div class="footer-cols">
-
             <div>
-
                 <h4>تعرف علينا</h4>
-
                 <ul><li>عن أمازون جازان</li><li>وظائف</li><li>الاستدامة</li></ul>
-
             </div>
-
             <div>
-
                 <h4>كن شريكاً معنا</h4>
-
                 <ul><li>البيع على أمازون</li><li>التسويق بالعمولة</li><li>بناء علامتك</li></ul>
-
             </div>
-
             <div>
-
                 <h4>دعنا نساعدك</h4>
-
                 <ul><li>حسابك</li><li>تتبع الطرود</li><li>سياسة الإرجاع</li></ul>
-
             </div>
-
             <div>
-
                 <h4>تواصل معنا</h4>
-
                 <ul>
-
                     <li>📍 جامعة جازان - الحاسب</li>
-
                     <li>📞 800-123-4567</li>
-
                     <li>📧 support@amazon-jazan.com</li>
-
                 </ul>
-
             </div>
-
         </div>
-
         <div class="footer-bottom">
-
             <p>© 2026، أمازون جازان - مشروع الطالب حسام - جامعة جازان</p>
-
         </div>
-
     </footer>
-
-
-
     <script>
-
-        // توليد 50 منتج
-
         const cats = ["كتب", "هواتف", "ألعاب", "إلكترونيات"];
-
         const productNames = ["آيفون 16 برو", "ماك بوك إير M3", "كتاب برمجة PHP", "سماعة عازلة للصوت", "بلاي ستيشن 5", "ساعة ذكية Ultra", "رواية عالم صوفي", "شاشة 4K ذكية"];
-
         const products = [];
-
         for(let i=0; i<50; i++){
-
             products.push({
-
                 name: productNames[i % productNames.length] + " (إصدار " + (i+1) + ")",
-
                 price: Math.floor(Math.random() * 5000) + 150,
-
                 cat: cats[i % cats.length],
-
                 img: `https://picsum.photos/seed/${i+20}/300/300`
-
             });
-
         }
-
-
-
         function render(data) {
-
             const grid = document.getElementById('productGrid');
-
             grid.innerHTML = data.map(p => `
-
                 <div class="product-card">
-
                     <img src="${p.img}" alt="${p.name}">
-
                     <div class="product-info">
-
                         <small style="color: #007185">${p.cat}</small>
-
                         <h4>${p.name}</h4>
-
                         <p class="price">${p.price} ريال</p>
-
                         <button class="btn-amazon" onclick="alert('تمت الإضافة للسلة')">إضافة للسلة</button>
-
                     </div>
-
                 </div>
-
             `).join('');
-
         }
-
-
-
         function performSearch() {
-
             const query = document.getElementById('searchInput').value.toLowerCase();
-
             const filtered = products.filter(p => p.name.toLowerCase().includes(query) || p.cat.includes(query));
-
             document.getElementById('sectionTitle').innerText = "نتائج البحث عن: " + query;
-
             render(filtered);
-
         }
-
-
-
         function filter(c) {
-
             const filtered = products.filter(p => p.cat === c);
-
             document.getElementById('sectionTitle').innerText = "قسم: " + c;
-
             render(filtered);
-
         }
-
-
-
-        // نظام التقييمات الجديد (5 تقييمات)
-
         const reviews = [
-
             { text: "سرعة التوصيل مذهلة، طلبت الآيفون ووصلني في نفس اليوم بجازان!", name: "محمد العتودي" },
-
             { text: "خدمة العملاء محترفة جداً، ساعدوني في استبدال المنتج بكل سهولة وبدون تعقيد.", name: "ليلى القحطاني" },
-
             { text: "الأسعار منافسة جداً مقارنة بالمتاجر الأخرى، والمنتجات أصلية ومضمونة.", name: "خالد صميلي" },
-
             { text: "تصميم الموقع مريح وسهل جداً، والبحث عن المنتجات ذكي ودقيق للغاية.", name: "نورة جابر" },
-
             { text: "أفضل مكان لشراء مستلزمات الجامعة والدراسة في المنطقة، أنصح به الجميع.", name: "إبراهيم حكمي" }
-
         ];
-
-
-
         let currentIdx = 0;
-
-
-
         function updateReviewDisplay() {
-
             const rBox = document.getElementById('reviewBox');
-
             const nBox = document.getElementById('reviewerBox');
-
             rBox.style.opacity = 0;
-
             setTimeout(() => {
-
                 rBox.innerText = `"${reviews[currentIdx].text}"`;
-
                 nBox.innerText = `- ${reviews[currentIdx].name}`;
-
                 rBox.style.opacity = 1;
-
             }, 200);
-
         }
-
-
-
         function changeReview(dir) {
-
             currentIdx += dir;
-
             if (currentIdx > reviews.length - 1) currentIdx = 0;
-
             if (currentIdx < 0) currentIdx = reviews.length - 1;
-
             updateReviewDisplay();
-
         }
-
-
-
         render(products);
-
         updateReviewDisplay();
-
     </script>
-
 </body>
-
 </html>
-
