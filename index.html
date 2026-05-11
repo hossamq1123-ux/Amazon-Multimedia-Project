@@ -9,21 +9,16 @@
 <body>
     <header>
         <div class="nav-main">
-            <div class="logo" onclick="location.href='index.html'">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon Logo">
-            </div>
+            <div class="logo" onclick="location.href='index.html'"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg"></div>
             <div class="search-container">
-                <input type="text" id="searchInput" placeholder="ابحث في أمازون جازان...">
+                <input type="text" placeholder="ابحث في أمازون جازان...">
                 <button class="search-btn">🔍</button>
             </div>
-            <div class="user-nav">
-                <small>مرحباً، حسام</small>
-                <div style="font-weight: bold;">الحساب والقوائم</div>
-            </div>
+            <div class="user-nav"><small>مرحباً، حسام</small></div>
         </div>
         <nav class="nav-links">
             <a href="index.html">الرئيسية</a>
-            <a href="media.html">الوسائط والإعلانات</a>
+            <a href="media.html">الوسائط (فيديو)</a>
             <a href="basket.html">السلة</a>
             <a href="social.html">تواصل معنا</a>
         </nav>
@@ -55,7 +50,6 @@
                 <h3>روابط سريعة</h3>
                 <ul>
                     <li><a href="#">سياسة الإرجاع</a></li>
-                    <li><a href="#">الشحن والتوصيل</a></li>
                     <li><a href="basket.html">عربة التسوق</a></li>
                 </ul>
             </div>
@@ -66,7 +60,7 @@
     </footer>
 
     <script>
-        // قاعدة بيانات المنتجات الثابتة مع روابط صور مستقرة
+        // المنتجات بصور حقيقية وروابط مباشرة تعمل
         const productsDB = [
             { id: 1, cat: "الكتب", name: "كتاب أساسيات PHP", price: 120, img: "https://m.media-amazon.com/images/I/51E6v8vKstL.jpg" },
             { id: 2, cat: "الكتب", name: "رواية عالم صوفي", price: 65, img: "https://m.media-amazon.com/images/I/81A+X50bExL.jpg" },
@@ -83,12 +77,10 @@
             productsDB.filter(p => p.cat === catName).forEach(p => {
                 html += `
                     <div class="product-card">
-                        <img src="${p.img}" alt="${p.name}" onclick="goToDetails(${p.id})">
-                        <div class="product-info">
-                            <h4>${p.name}</h4>
-                            <p class="price">${p.price} ريال</p>
-                            <button class="btn-amazon" onclick="addToCart(${p.id})">إضافة للسلة</button>
-                        </div>
+                        <img src="${p.img}" alt="${p.name}">
+                        <h4>${p.name}</h4>
+                        <p class="price">${p.price} ريال</p>
+                        <button class="btn-amazon" onclick="addToCart(${p.id})">إضافة للسلة</button>
                     </div>`;
             });
             html += `</div></div>`;
@@ -100,12 +92,6 @@
             cart.push(productsDB.find(p => p.id === id));
             localStorage.setItem('cart', JSON.stringify(cart));
             alert('تمت الإضافة للسلة بنجاح!');
-        }
-
-        function goToDetails(id) {
-            const product = productsDB.find(p => p.id === id);
-            localStorage.setItem('selectedProduct', JSON.stringify(product));
-            window.location.href = 'details.html';
         }
     </script>
 </body>
