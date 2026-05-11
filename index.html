@@ -10,30 +10,53 @@
         <div class="nav-main">
             <div class="logo" onclick="location.href='index.html'"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg"></div>
             <div class="search-container">
-                <input type="text" id="searchInput" placeholder="ابحث عن آيفون، كتب، إلكترونيات...">
+                <input type="text" placeholder="ابحث عن منتجات...">
                 <button class="search-btn">🔍</button>
             </div>
             <div class="user-nav"><small>مرحباً، حسام</small></div>
         </div>
         <nav class="nav-links">
             <a href="index.html">الرئيسية</a>
-            <a href="media.html">الوسائط (فيديو)</a>
+            <a href="media.html">الوسائط والإعلانات</a>
             <a href="basket.html">السلة</a>
-            <a href="social.html">التواصل الاجتماعي</a>
+            <a href="social.html">تواصل معنا</a>
         </nav>
     </header>
 
     <div class="container">
         <div id="categories-container"></div>
-        
-        <div class="testimonial-section">
-            <div id="reviewBox">"جاري تحميل التقييمات..."</div>
-            <div id="reviewerBox" style="font-weight:bold; color:#c45500; margin-top:10px;"></div>
-        </div>
     </div>
 
     <footer class="amazon-footer">
-        <p>© 2026، أمازون جازان - مشروع الطالب حسام - جامعة جازان</p>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>الدعم الفني</h3>
+                <ul>
+                    <li><a href="#">مركز المساعدة</a></li>
+                    <li><a href="#">تتبع الشحنات</a></li>
+                    <li><a href="#">فتح تذكرة دعم</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>اتصل بنا</h3>
+                <ul>
+                    <li>البريد: support@jazan-amazon.sa</li>
+                    <li>الهاتف: 920001234</li>
+                    <li>واتساب: +966500000000</li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>حسابي</h3>
+                <ul>
+                    <li><a href="#">تفاصيل الحساب</a></li>
+                    <li><a href="#">طلباتي</a></li>
+                    <li><a href="basket.html">عربة التسوق</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026، أمازون جازان - مشروع الطالب حسام - جامعة جازان</p>
+        </div>
     </footer>
 
     <script>
@@ -41,46 +64,32 @@
             { id: 1, cat: "الكتب", name: "كتاب أساسيات PHP", price: 120, img: "https://m.media-amazon.com/images/I/51E6v8vKstL.jpg" },
             { id: 2, cat: "الكتب", name: "رواية عالم صوفي", price: 65, img: "https://m.media-amazon.com/images/I/81A+X50bExL.jpg" },
             { id: 3, cat: "الهواتف", name: "iPhone 16 Pro Max", price: 5699, img: "https://m.media-amazon.com/images/I/61H7R9uI7LL._AC_SL1500_.jpg" },
-            { id: 4, cat: "الهواتف", name: "Samsung Galaxy S24 Ultra", price: 4499, img: "https://m.media-amazon.com/images/I/71WetsS696L._AC_SL1500_.jpg" },
-            { id: 5, cat: "الألعاب", name: "Sony PlayStation 5 Slim", price: 2149, img: "https://m.media-amazon.com/images/I/41m7G7769LL._AC_SL1000_.jpg" },
-            { id: 6, cat: "الإلكترونيات", name: "شاشة TCL 65 Inch 4K", price: 1999, img: "https://m.media-amazon.com/images/I/71rI74D5fPL._AC_SL1500_.jpg" }
+            { id: 5, cat: "الألعاب", name: "Sony PlayStation 5", price: 2149, img: "https://m.media-amazon.com/images/I/41m7G7769LL._AC_SL1000_.jpg" }
         ];
 
-        const order = ["الكتب", "الهواتف", "الألعاب", "الإلكترونيات"];
+        const order = ["الكتب", "الهواتف", "الألعاب"];
         const container = document.getElementById('categories-container');
 
         order.forEach(catName => {
-            const filtered = productsDB.filter(p => p.cat === catName);
-            if(filtered.length > 0) {
-                let html = `<div class="category-section"><h2 class="section-title">${catName}</h2><div class="product-grid-two-cols">`;
-                filtered.forEach(p => {
-                    html += `<div class="product-card">
-                        <img src="${p.img}" onclick="location.href='media.html'">
-                        <h4>${p.name}</h4>
-                        <p class="price">${p.price} ريال</p>
-                        <button class="btn-amazon" onclick="addToCart(${p.id})">إضافة للسلة</button>
-                    </div>`;
-                });
-                html += `</div></div>`;
-                container.innerHTML += html;
-            }
+            let html = `<div class="category-section"><h2 class="section-title">${catName}</h2><div class="product-grid-two-cols">`;
+            productsDB.filter(p => p.cat === catName).forEach(p => {
+                html += `<div class="product-card">
+                    <img src="${p.img}">
+                    <h4>${p.name}</h4>
+                    <p class="price">${p.price} ريال</p>
+                    <button class="btn-amazon" onclick="addToCart(${p.id})">إضافة للسلة</button>
+                </div>`;
+            });
+            html += `</div></div>`;
+            container.innerHTML += html;
         });
 
         function addToCart(id) {
             let cart = JSON.parse(localStorage.getItem('cart')) || [];
-            const product = productsDB.find(p => p.id === id);
-            cart.push(product);
+            cart.push(productsDB.find(p => p.id === id));
             localStorage.setItem('cart', JSON.stringify(cart));
-            alert('تمت إضافة المنتج للسلة!');
+            alert('تمت الإضافة للسلة');
         }
-
-        const reviews = [{t:"أفضل متجر في جازان", n:"أحمد"}, {t:"الآيفون وصلني بسرعة", n:"سارة"}];
-        let rIdx = 0;
-        setInterval(() => {
-            document.getElementById('reviewBox').innerText = `"${reviews[rIdx].t}"`;
-            document.getElementById('reviewerBox').innerText = `- ${reviews[rIdx].n}`;
-            rIdx = (rIdx + 1) % reviews.length;
-        }, 3000);
     </script>
 </body>
 </html>
