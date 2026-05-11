@@ -14,7 +14,7 @@
                 <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon Logo">
             </div>
             <div class="search-container">
-                <input type="text" id="searchInput" placeholder="ابحث عن آيفون، كتب، إلكترونيات...">
+                <input type="text" id="searchInput" placeholder="ابحث في أمازون جازان...">
                 <button class="search-btn" onclick="performSearch()">🔍</button>
             </div>
             <div class="user-nav" onclick="location.href='login.html'">
@@ -23,7 +23,7 @@
             </div>
         </div>
         <nav class="nav-links">
-            <a href="index.html">الكل</a>
+            <a href="index.html">الرئيسية</a>
             <a href="departments.html">الأقسام</a>
             <a href="media.html">الوسائط (آيفون 16)</a>
             <a href="basket.html">السلة</a>
@@ -42,21 +42,26 @@
         </div>
 
         <h2 id="sectionTitle" class="section-title">أحدث المنتجات المختارة</h2>
-        
-        <div class="product-grid" id="productGrid">
-            </div>
+        <div class="product-grid" id="productGrid"></div>
 
-        <div class="testimonial-section">
-            <h2 style="margin-bottom: 30px; color: #232f3e;">ماذا يقول عملاؤنا؟</h2>
+        <section class="testimonial-section">
+            <div class="testimonial-header">
+                <h2>ماذا يقول عملاؤنا؟</h2>
+                <div class="title-underline"></div>
+            </div>
+            
             <div class="slider-wrapper">
                 <button class="slide-btn next" onclick="changeReview(1)">&#10094;</button>
+                
                 <div class="testimonial-card">
-                    <div id="reviewBox">"تحميل التقييمات..."</div>
+                    <div class="quote-icon">"</div>
+                    <div id="reviewBox" class="review-text">تحميل التقييمات...</div>
                     <div id="reviewerBox" class="reviewer-name"></div>
                 </div>
+                
                 <button class="slide-btn prev" onclick="changeReview(-1)">&#10095;</button>
             </div>
-        </div>
+        </section>
 
     </div>
 
@@ -85,12 +90,12 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>© 2026، أمازون جازان - مشروع مادة تطبيقات الوسائط المتعددة - تصميم حسام</p>
+            <p>© 2026، أمازون جازان - مشروع الطالب حسام - جامعة جازان</p>
         </div>
     </footer>
 
     <script>
-        // نظام توليد 50 منتج متنوع
+        // توليد 50 منتج
         const cats = ["كتب", "هواتف", "ألعاب", "إلكترونيات"];
         const productNames = ["آيفون 16 برو", "ماك بوك إير M3", "كتاب برمجة PHP", "سماعة عازلة للصوت", "بلاي ستيشن 5", "ساعة ذكية Ultra", "رواية عالم صوفي", "شاشة 4K ذكية"];
         const products = [];
@@ -129,10 +134,9 @@
             const filtered = products.filter(p => p.cat === c);
             document.getElementById('sectionTitle').innerText = "قسم: " + c;
             render(filtered);
-            window.scrollTo({ top: 500, behavior: 'smooth' });
         }
 
-        // نظام التقييمات الجديد (5 تقييمات مختلفة)
+        // نظام التقييمات الجديد (5 تقييمات)
         const reviews = [
             { text: "سرعة التوصيل مذهلة، طلبت الآيفون ووصلني في نفس اليوم بجازان!", name: "محمد العتودي" },
             { text: "خدمة العملاء محترفة جداً، ساعدوني في استبدال المنتج بكل سهولة وبدون تعقيد.", name: "ليلى القحطاني" },
@@ -161,7 +165,6 @@
             updateReviewDisplay();
         }
 
-        // العرض الأولي
         render(products);
         updateReviewDisplay();
     </script>
