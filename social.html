@@ -2,33 +2,168 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>امازون جازان - روابط التواصل</title>
+    <style>
+        /* ==========================================================================
+           1. إعدادات الصفحة والخلفية (مستوحاة من ألوان القهوة الدافئة في صورتك)
+           ========================================================================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+        }
+
+        body {
+            /* خلفية داكنة متدرجة تمنح طابع الفخامة للقهوة المختصة */
+            background: linear-gradient(rgba(43, 29, 20, 0.85), rgba(20, 13, 9, 0.95)), 
+                        url('https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=1000&auto=format&fit=crop') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        /* ==========================================================================
+           2. الهيدر والشعار (Profile Section)
+           ========================================================================== */
+        .profile-container {
+            text-align: center;
+            margin-top: 20px;
+            margin-bottom: 30px;
+        }
+
+        /* الشعار الدائري بإطار أبيض دافئ مثل الصورة */
+        .profile-logo {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            border: 4px solid #fffaf2;
+            object-fit: cover;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+            margin-bottom: 20px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .profile-logo:hover {
+            transform: scale(1.05);
+        }
+
+        .profile-title {
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .profile-subtitle {
+            font-size: 1.1rem;
+            color: #ddd;
+            max-width: 400px;
+            margin: 0 auto;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+        }
+
+        /* ==========================================================================
+           3. حاوية الأزرار وتأثير الزجاج الضبابي (Links Section)
+           ========================================================================== */
+        .links-wrapper {
+            width: 100%;
+            max-width: 480px;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            margin-bottom: 40px;
+        }
+
+        /* تأثير الـ Glassmorphism للأزرار الشفافة كالصورة تماماً */
+        .social-link-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            width: 100%;
+            padding: 16px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 14px;
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: bold;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        /* تأثير الحركة السلسة عند التمرير بالماوس فوق الأزرار */
+        .social-link-btn:hover {
+            background: rgba(255, 255, 255, 0.18);
+            border-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+        }
+
+        .social-link-btn:active {
+            transform: translateY(-1px);
+        }
+
+        /* تعديل الألوان الخاصة بالإيقونات والنصوص الداخلية */
+        .icon {
+            font-size: 1.3rem;
+        }
+
+        /* ==========================================================================
+           4. تذييل الصفحة البسيط والمطابق للصورة (Footer Section)
+           ========================================================================== */
+        .social-footer {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.5);
+            text-align: center;
+            letter-spacing: 0.5px;
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <div class="nav-main">
-            <div class="logo" onclick="location.href='index.html'"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg"></div>
-        </div>
-        <nav class="nav-links"><a href="index.html">الرئيسية</a></nav>
-    </header>
 
-    <div class="container">
-        <h2 style="text-align: center; margin-top: 30px;">تابعنا على منصات التواصل</h2>
-        <div class="social-grid">
-            <a href="#" class="social-card tw"><h1>X</h1><h3>تويتر (X)</h3><p>تابع عروضنا اليومية</p></a>
-            <a href="#" class="social-card inst"><h1>📸</h1><h3>إنستقرام</h3><p>شاهد أحدث المنتجات</p></a>
-            <a href="#" class="social-card fb"><h1>f</h1><h3>فيسبوك</h3><p>تواصل مع مجتمعنا</p></a>
-        </div>
+    <div class="profile-container">
+        <img src="https://m.media-amazon.com/images/I/51E6v8vKstL.jpg" class="profile-logo" alt="محمصة BR7" onclick="location.href='index.html'">
+        <h1 class="profile-title">امازون جازان</h1>
+        <p class="profile-subtitle"> شغفنا الذي نشاركه معكم</p>
     </div>
 
-    <footer class="amazon-footer">
-        <div class="footer-cols">
-            <div><h4>عن الشركة</h4><ul><li>من نحن</li></ul></div>
-            <div><h4>المساعدة</h4><ul><li>الدعم الفني</li></ul></div>
-            <div><h4>روابط</h4><ul><li>الأحكام</li></ul></div>
-            <div><h4>العنوان</h4><ul><li>جازان - السعودية</li></ul></div>
-        </div>
-        <div class="footer-bottom"><p>© 2026، أمازون جازان - تصميم حسام</p></div>
+    <div class="links-wrapper">
+        <a href="index.html" class="social-link-btn">
+            <span class="icon">🌐</span> الموقع الإلكتروني
+        </a>
+        
+        <a href="https://instagram.com" target="_blank" class="social-link-btn">
+            <span class="icon">📸</span> إنستقرام
+        </a>
+        
+        <a href="https://snapchat.com" target="_blank" class="social-link-btn">
+            <span class="icon">👻</span> سناب شات
+        </a>
+        
+        <a href="https://twitter.com" target="_blank" class="social-link-btn">
+            <span class="icon">🐦</span> تويتر (X)
+        </a>
+        
+        <a href="https://wa.me/966500000000" target="_blank" class="social-link-btn">
+            <span class="icon">💬</span> واتساب
+        </a>
+    </div>
+
+    <footer class="social-footer">
+        جميع الحقوق محفوظة لأمازون جازان © 2026
     </footer>
+
 </body>
 </html>
