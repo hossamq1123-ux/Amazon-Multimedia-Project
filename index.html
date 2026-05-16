@@ -16,10 +16,14 @@
                 <input type="text" placeholder="ابحث في أمازون جازان...">
                 <button class="search-btn">🔍</button>
             </div>
-            <div class="user-nav"><small>مرحباً، حسام</small></div>
+            <div class="user-nav" onclick="location.href='login.html'" style="cursor: pointer;">
+                <small>مرحباً، حسام</small>
+                <div style="font-weight: bold; color: #febd69;">تسجيل الدخول 👤</div>
+            </div>
         </div>
         <nav class="nav-links">
             <a href="index.html">الرئيسية</a>
+            <a href="departments.html">الأقسام</a>
             <a href="media.html">الوسائط (فيديو)</a>
             <a href="basket.html">السلة</a>
             <a href="social.html">تواصل معنا</a>
@@ -49,21 +53,19 @@
                 </ul>
             </div>
             <div class="footer-column">
-                <h3>روابط سريعة</h3>
+                <h3>حسابي</h3>
                 <ul>
-                    <li><a href="#">سياسة الإرجاع</a></li>
+                    <li><a href="login.html">تسجيل الدخول</a></li>
                     <li><a href="basket.html">عربة التسوق</a></li>
                 </ul>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>© 2026، أمازون جازان - مشروع المجموعة رقم 1 - جامعة جازان</p>
+            <p>© 2026، أمازون جازان - مشروع الطالب حسام - جامعة جازان</p>
         </div>
     </footer>
 
     <script>
-        // قاعدة البيانات الثابتة مرتبطة بملفات الصور الخاصة بك مباشرة
-        // ملاحظة: غير الأسماء المكتوبة في خانة (img) لأسماء صورك الحقيقية التي رفعتها على GitHub
         const productsDB = [
             { id: 1, cat: "الكتب", name: "كتاب أساسيات PHP", price: 120, img: "php-book.jpg" }, 
             { id: 2, cat: "الكتب", name: "رواية لعبة العروش", price: 65, img: "sofie.jpg" },
