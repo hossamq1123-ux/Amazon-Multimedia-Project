@@ -62,13 +62,14 @@
     </footer>
 
     <script>
-        // قاعدة بيانات ثابتة مع صور رسومية مشفرة داخلياً مستحيل تختفي أو تظهر بيضاء
+        // قاعدة البيانات الثابتة مرتبطة بملفات الصور الخاصة بك مباشرة
+        // ملاحظة: غير الأسماء المكتوبة في خانة (img) لأسماء صورك الحقيقية التي رفعتها على GitHub
         const productsDB = [
-            { id: 1, cat: "الكتب", name: "كتاب أساسيات PHP", price: 120, img: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect x='25' y='15' width='50' height='70' rx='5' fill='%23232f3e'/><path d='M35 25 h30 M35 40 h30 M35 55 h20' stroke='white' stroke-width='4' stroke-linecap='round'/><rect x='67' y='15' width='8' height='70' fill='%23febd69'/></svg>" },
-            { id: 2, cat: "الكتب", name: "رواية عالم صوفي", price: 65, img: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect x='25' y='15' width='50' height='70' rx='5' fill='%23b12704'/><path d='M35 30 h30 M35 45 h30' stroke='white' stroke-width='4' stroke-linecap='round'/><circle cx='50' cy='65' r='6' fill='%23febd69'/></svg>" },
-            { id: 3, cat: "الهواتف", name: "iPhone 16 Pro Max", price: 5699, img: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect x='30' y='10' width='40' height='80' rx='8' fill='%23131921' stroke='%238e8e93' stroke-width='2'/><rect x='33' y='13' width='34' height='74' rx='5' fill='%23000'/><circle cx='50' cy='20' r='3' fill='%23131921'/><circle cx='50' cy='78' r='4' fill='%23232f3e'/></svg>" },
-            { id: 4, cat: "الهواتف", name: "Samsung Galaxy S24 Ultra", price: 4499, img: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect x='30' y='10' width='40' height='80' rx='4' fill='%23232f3e' stroke='%23febd69' stroke-width='2'/><rect x='33' y='13' width='34' height='74' rx='2' fill='%23111'/><line x1='38' y1='18' x2='62' y2='18' stroke='%23333' stroke-width='3'/></svg>" },
-            { id: 5, cat: "الألعاب", name: "Sony PlayStation 5 Slim", price: 2149, img: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M35 15 L45 85 L55 85 L65 15 Z' fill='%23eee' stroke='%23131921' stroke-width='2'/><rect x='46' y='20' width='8' height='60' fill='%23131921'/><circle cx='50' cy='30' r='2' fill='%23007185'/></svg>" }
+            { id: 1, cat: "الكتب", name: "كتاب أساسيات PHP", price: 120, img: "php-book.jpg" }, 
+            { id: 2, cat: "الكتب", name: "رواية عالم صوفي", price: 65, img: "sofie.jpg" },
+            { id: 3, cat: "الهواتف", name: "iPhone 16 Pro Max", price: 5699, img: "iphone16.jpg" },
+            { id: 4, cat: "الهواتف", name: "Samsung Galaxy S24 Ultra", price: 4499, img: "s24.jpg" },
+            { id: 5, cat: "الألعاب", name: "Sony PlayStation 5 Slim", price: 2149, img: "ps5.jpg" }
         ];
 
         const order = ["الكتب", "الهواتف", "الألعاب"];
