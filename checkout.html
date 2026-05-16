@@ -47,34 +47,27 @@
     </div>
 
     <script>
-        // دالة لجلب المجموع الحقيقي من السلة وعرضه فوراً عند فتح الصفحة
         function displayCheckoutAmount() {
             const cart = JSON.parse(localStorage.getItem('cart')) || [];
             let total = 0;
             
-            // حساب مجموع المنتجات المضافة فعلياً
             cart.forEach(item => {
                 total += item.price;
             });
             
-            // تحديث النص في الصفحة ليطابق السلة تماماً
             document.getElementById('checkoutTotal').innerText = total.toLocaleString();
         }
 
-        // دالة عند الضغط على زر الدفع
         function processPayment(event) {
-            event.preventDefault(); // منع الصفحة من إعادة التحميل الافتراضية
+            event.preventDefault(); 
             
             alert('تمت عملية الدفع بنجاح! شكراً لتسوقك من أمازون جازان.');
             
-            // تفريغ السلة بعد الشراء الناجح
             localStorage.removeItem('cart');
             
-            // العودة للصفحة الرئيسية
             location.href = 'index.html';
         }
 
-        // تشغيل الدالة تلقائياً عند تحميل الصفحة
         window.onload = displayCheckoutAmount;
     </script>
 </body>
