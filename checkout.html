@@ -2,31 +2,80 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <title>تفاصيل الدفع - أمازون جازان</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إتمام الشراء - أمازون جازان</title>
     <link rel="stylesheet" href="style.css">
-    <style>
-        .payment-body { background-color: #fffaf2; display: flex; justify-content: center; padding: 40px; }
-        .payment-card { background: #fffaf2; width: 100%; max-width: 450px; padding: 30px; }
-        .input-group { margin-bottom: 20px; }
-        .input-group label { display: block; margin-bottom: 8px; color: #8b7355; font-weight: bold; }
-        .input-group input, select { width: 100%; padding: 12px; border: none; border-radius: 10px; background: white; }
-        .confirm-btn { background-color: #76c91d; color: white; border: none; width: 100%; padding: 15px; border-radius: 12px; font-weight: bold; cursor: pointer; }
-    </style>
 </head>
 <body class="payment-body">
+
     <div class="payment-card">
-        <h2 style="text-align: center; margin-bottom: 30px;">تفاصيل الدفع</h2>
-        <div class="input-group"><label>الاسم الكامل</label><input type="text" placeholder="أدخل اسمك الكامل"></div>
-        <div class="input-group"><label>عنوان التوصيل</label><input type="text" placeholder="المدينة، الحي، الشارع"></div>
-        <div class="input-group"><label>رقم الجوال</label><input type="text" placeholder="05xxxxxxxx"></div>
-        <div class="input-group">
-            <label>طريقة الدفع</label>
-            <select><option>مدى / فيزا</option><option>الدفع عند الاستلام</option></select>
+        <div class="logo" style="text-align: center; margin-bottom: 20px;" onclick="location.href='index.html'">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" width="100" style="cursor:pointer;">
         </div>
-        <div style="margin: 20px 0; border-top: 1px solid #ddd; padding-top: 20px;">
-            <p style="font-size: 1.5rem; font-weight: bold;">الإجمالي: 4299 ريال</p>
+        
+        <h2 style="text-align: center; color: #232f3e; margin-bottom: 25px;">تفاصيل الشراء والدفع</h2>
+        
+        <div style="background: white; padding: 15px; border-radius: 10px; text-align: center; margin-bottom: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
+            <p style="font-size: 16px; color: #555;">المبلغ الإجمالي المطلوب دفعه:</p>
+            <b style="font-size: 26px; color: #B12704;" id="checkoutTotal">0</b> <b style="color: #B12704;">ريال</b>
         </div>
-        <button class="confirm-btn" onclick="alert('تم الطلب!'); location.href='index.html'">تأكيد الطلب والدفع</button>
+
+        <form id="paymentForm" onsubmit="processPayment(event)">
+            <div class="input-group">
+                <label>اسم حامل البطاقة</label>
+                <input type="text" required placeholder="حسام ...">
+            </div>
+            
+            <div class="input-group">
+                <label>رقم البطاقة</label>
+                <input type="text" maxlength="16" required placeholder="xxxx xxxx xxxx xxxx">
+            </div>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                <div class="input-group">
+                    <label>تاريخ الانتهاء</label>
+                    <input type="text" placeholder="MM/YY" required>
+                </div>
+                <div class="input-group">
+                    <label>الرمز السري (CVV)</label>
+                    <input type="password" maxlength="3" placeholder="xxx" required>
+                </div>
+            </div>
+
+            <button type="submit" class="confirm-btn">تأكيد ودفع المبلغ</button>
+        </form>
     </div>
+
+    <script>
+        // دالة لجلب المجموع الحقيقي من السلة وعرضه فوراً عند فتح الصفحة
+        function displayCheckoutAmount() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            let total = 0;
+            
+            // حساب مجموع المنتجات المضافة فعلياً
+            cart.forEach(item => {
+                total += item.price;
+            });
+            
+            // تحديث النص في الصفحة ليطابق السلة تماماً
+            document.getElementById('checkoutTotal').innerText = total.toLocaleString();
+        }
+
+        // دالة عند الضغط على زر الدفع
+        function processPayment(event) {
+            event.preventDefault(); // منع الصفحة من إعادة التحميل الافتراضية
+            
+            alert('تمت عملية الدفع بنجاح! شكراً لتسوقك من أمازون جازان.');
+            
+            // تفريغ السلة بعد الشراء الناجح
+            localStorage.removeItem('cart');
+            
+            // العودة للصفحة الرئيسية
+            location.href = 'index.html';
+        }
+
+        // تشغيل الدالة تلقائياً عند تحميل الصفحة
+        window.onload = displayCheckoutAmount;
+    </script>
 </body>
 </html>
