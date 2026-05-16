@@ -2,22 +2,67 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <title>الوسائط </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الوسائط - إعلان آيفون 16</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
         <div class="nav-main">
-            <div class="logo" onclick="location.href='index.html'"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" width="100"></div>
+            <div class="logo" onclick="location.href='index.html'">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon Logo">
+            </div>
+            <div class="search-container">
+                <input type="text" placeholder="ابحث في أمازون جازان...">
+                <button class="search-btn">🔍</button>
+            </div>
+            <div class="user-nav"><small>مرحباً، حسام</small></div>
         </div>
-        <nav class="nav-links"><a href="index.html">العودة للرئيسية</a></nav>
+        <nav class="nav-links">
+            <a href="index.html">الرئيسية</a>
+            <a href="media.html">الوسائط (فيديو)</a>
+            <a href="basket.html">السلة</a>
+            <a href="social.html">تواصل معنا</a>
+        </nav>
     </header>
 
     <div class="container">
-        <h1 style="text-align:center; margin:30px 0;">شاهد إعلان iPhone 16 Pro الرسمي</h1>
-        <div style="width:100%; max-width:850px; margin:0 auto; aspect-ratio: 16/9; border-radius:15px; overflow:hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.15);">
-            <iframe width="100%" height="100%" src="https://www.youtube.com/embed/GDlkCkcIqTs" frameborder="0" allowfullscreen></iframe>
+        <h1 style="text-align:center; margin:30px 0; color: #232f3e;">شاهد إعلان iPhone 16 Pro الرسمي</h1>
+        
+        <div style="width:100%; max-width:850px; margin:0 auto 5px auto; aspect-ratio: 16/9; background:#000; border-radius:15px; overflow:hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.15);">
+            <iframe width="100%" height="100%" src="https://www.youtube.com/watch?v=-JH1V8cbAXo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
         </div>
     </div>
+
+    <footer class="amazon-footer">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>الدعم الفني</h3>
+                <ul>
+                    <li><a href="#">مركز المساعدة</a></li>
+                    <li><a href="#">تتبع الشحنات</a></li>
+                    <li><a href="#">فتح تذكرة دعم</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>اتصل بنا</h3>
+                <ul>
+                    <li>البريد: support@jazan-amazon.sa</li>
+                    <li>الهاتف: 920001234</li>
+                    <li>واتساب: +966500000000</li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>روابط سريعة</h3>
+                <ul>
+                    <li><a href="#">سياسة الإرجاع</a></li>
+                    <li><a href="basket.html">عربة التسوق</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026، أمازون جازان - مشروع الطالب حسام - جامعة جازان</p>
+        </div>
+    </footer>
 </body>
 </html>
