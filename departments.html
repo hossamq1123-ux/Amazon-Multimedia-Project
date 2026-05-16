@@ -2,29 +2,102 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أمازون جازان - الأقسام</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
-        <div style="color: white; font-weight: bold; font-size: 1.5rem;">الأقسام</div>
-        <nav><a href="index.html">الرئيسية</a></nav>
-    </header>
-    <div class="container">
-        <h2 style="text-align:center;">اختر القسم الذي تريد تصفحه</h2>
-        <div class="product-grid" style="margin-top:40px;">
-            <div class="product-card" style="padding:40px; text-align:center; cursor:pointer;" onclick="location.href='index.html'">
-                <h1 style="font-size:4rem;">📚</h1><h3>الكتب</h3>
+        <div class="nav-main">
+            <div class="logo" onclick="location.href='index.html'">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon Logo">
             </div>
-            <div class="product-card" style="padding:40px; text-align:center; cursor:pointer;" onclick="location.href='index.html'">
-                <h1 style="font-size:4rem;">📱</h1><h3>الهواتف</h3>
+            <div class="search-container">
+                <input type="text" placeholder="ابحث في الأقسام...">
+                <button class="search-btn">🔍</button>
             </div>
-            <div class="product-card" style="padding:40px; text-align:center; cursor:pointer;" onclick="location.href='index.html'">
-                <h1 style="font-size:4rem;">🧸</h1><h3>الألعاب</h3>
-            </div>
-            <div class="product-card" style="padding:40px; text-align:center; cursor:pointer;" onclick="location.href='index.html'">
-                <h1 style="font-size:4rem;">💻</h1><h3>إلكترونيات</h3>
+            <div class="user-nav" onclick="location.href='login.html'" style="cursor: pointer;">
+                <small>مرحباً، حسام</small>
+                <div style="font-weight: bold; color: #febd69;">تسجيل الدخول 👤</div>
             </div>
         </div>
+        <nav class="nav-links">
+            <a href="index.html">الرئيسية</a>
+            <a href="departments.html">الأقسام</a>
+            <a href="media.html">الوسائط (فيديو)</a>
+            <a href="basket.html">السلة</a>
+            <a href="social.html">تواصل معنا</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div id="departments-container"></div>
     </div>
+
+    <footer class="amazon-footer">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>الدعم الفني</h3>
+                <ul>
+                    <li><a href="#">مركز المساعدة</a></li>
+                    <li><a href="#">تتبع الشحنات</a></li>
+                    <li><a href="#">فتح تذكرة دعم</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>اتصل بنا</h3>
+                <ul>
+                    <li>البريد: support@jazan-amazon.sa</li>
+                    <li>الهاتف: 920001234</li>
+                    <li>واتساب: +966500000000</li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>روابط سريعة</h3>
+                <ul>
+                    <li><a href="login.html">تسجيل الدخول</a></li>
+                    <li><a href="basket.html">عربة التسوق</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026، أمازون جازان - مشروع الطالب حسام - جامعة جازان</p>
+        </div>
+    </footer>
+
+    <script>
+        const productsDB = [
+            { id: 1, cat: "الكتب", name: "كتاب أساسيات PHP", price: 120, img: "php-book.jpg" }, 
+            { id: 2, cat: "الكتب", name: "رواية لعبة العروش", price: 65, img: "sofie.jpg" },
+            { id: 3, cat: "الهواتف", name: "iPhone 16 Pro Max", price: 5699, img: "iphone16.jpg" },
+            { id: 4, cat: "الهواتف", name: "Samsung Galaxy S24 Ultra", price: 4499, img: "s24.jpg" },
+            { id: 5, cat: "الألعاب", name: "Sony PlayStation 5 Slim", price: 2149, img: "ps5.jpg" }
+        ];
+
+        const order = ["الكتب", "الهواتف", "الألعاب"];
+        const container = document.getElementById('departments-container');
+
+        order.forEach(catName => {
+            let html = `<div class="category-section"><h2 class="section-title">${catName}</h2><div class="product-grid-two-cols">`;
+            productsDB.filter(p => p.cat === catName).forEach(p => {
+                html += `
+                    <div class="product-card">
+                        <img src="${p.img}" alt="${p.name}">
+                        <h4>${p.name}</h4>
+                        <p class="price">${p.price} ريال</p>
+                        <button class="btn-amazon" onclick="addToCart(${p.id})">إضافة للسلة</button>
+                    </div>`;
+            });
+            html += `</div></div>`;
+            container.innerHTML += html;
+        });
+
+        function addToCart(id) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.push(productsDB.find(p => p.id === id));
+            localStorage.setItem('cart', JSON.stringify(cart));
+            alert('تمت إضافة المنتج إلى عربة التسوق بنجاح!');
+        }
+    </script>
 </body>
 </html>
