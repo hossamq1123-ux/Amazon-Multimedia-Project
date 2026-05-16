@@ -2,34 +2,36 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تسجيل الدخول - أمازون جازان</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        .login-body { display: flex; justify-content: center; align-items: center; min-height: 80vh; padding: 20px; }
+        .login-card { background: white; padding: 30px; border: 1px solid #ddd; border-radius: 8px; width: 100%; max-width: 380px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+        .login-card h2 { margin-bottom: 20px; color: var(--navy); font-size: 1.8rem; }
+    </style>
 </head>
-<body style="background: white; text-align: center; padding-top: 60px;">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" width="130" style="cursor: pointer;" onclick="location.href='index.html'">
-    
-    <div id="loginBox" style="width: 360px; border: 1px solid #ddd; padding: 35px; margin: 30px auto; border-radius: 8px; text-align: right;">
-        <h2 id="title">تسجيل الدخول</h2>
-        <input type="email" id="email" placeholder="البريد الإلكتروني" style="width: 100%; padding: 10px; margin: 15px 0; border: 1px solid #888; border-radius: 3px;">
-        <button class="btn-amazon" onclick="login()">استمرار</button>
-        <p style="font-size: 12px; margin-top: 20px;">بالاستمرار، أنت توافق على شروط أمازون جازان.</p>
-    </div>
+<body>
+    <header style="text-align: center; padding: 15px 0;">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" width="100" onclick="location.href='index.html'" style="cursor: pointer;">
+    </header>
 
-    <div id="regSec">
-        <p style="color: #767676; font-size: 12px;">جديد في أمازون؟</p>
-        <button onclick="showReg()" style="width: 360px; padding: 8px; margin-top: 10px; border: 1px solid #adb1b8; background: #e7e9ec; border-radius: 3px; cursor: pointer;">أنشئ حسابك الجديد</button>
+    <div class="login-body">
+        <div class="login-card">
+            <h2>تسجيل الدخول</h2>
+            <form onsubmit="event.preventDefault(); alert('تم تسجيل الدخول بنجاح! أهلاً بك يا حسام.'); location.href='index.html';">
+                <div class="input-group">
+                    <label style="color: #111;">البريد الإلكتروني أو رقم الجوال</label>
+                    <input type="text" required placeholder="أدخل بياناتك هنا">
+                </div>
+                <div class="input-group">
+                    <label style="color: #111;">كلمة المرور</label>
+                    <input type="password" required placeholder="••••••••">
+                </div>
+                <button type="submit" class="btn-amazon" style="margin-top: 10px; padding: 12px;">متابعة</button>
+            </form>
+            <p style="font-size: 12px; color: #555; margin-top: 20px; line-height: 1.5;">بقيامك بتسجيل الدخول، فإنك توافق على شروط الاستخدام والبيع الخاصة بأمازون جازان.</p>
+        </div>
     </div>
-
-    <script>
-        function login() {
-            localStorage.setItem('isLoggedIn', 'true');
-            alert('أهلاً بك يا حسام! تم تسجيل الدخول.');
-            location.href = 'index.html';
-        }
-        function showReg() {
-            document.getElementById('title').innerText = "إنشاء حساب جديد";
-            document.getElementById('regSec').style.display = 'none';
-            alert('يمكنك الآن إدخال بيانات حسابك الجديد.');
-        }
-    </script>
 </body>
 </html>
