@@ -15,10 +15,11 @@
     <div class="container" style="display: grid; grid-template-columns: 3fr 1fr; gap: 20px;">
         <div style="background: white; padding: 25px; border-radius: 8px; border: 1px solid #ddd;">
             <h2>عربة التسوق</h2>
-            <div id="cartContainer"></div>
+            <div id="cartContainer" style="margin-top:20px;"></div>
         </div>
         <div style="background: white; padding: 25px; border-radius: 8px; border: 1px solid #ddd; height: fit-content;">
-            <p>المجموع الحقيقي: <br><b style="font-size:28px; color:#B12704;" id="totalReal">0</b> ريال</p>
+            <p style="font-size: 18px;">المجموع الحقيقي: <br>
+            <b style="font-size:28px; color:#B12704;" id="totalReal">0</b> <b>ريال</b></p>
             <button class="btn-amazon" style="margin-top:20px;" onclick="location.href='checkout.html'">تابع عملية الشراء</button>
         </div>
     </div>
@@ -37,14 +38,19 @@
 
             container.innerHTML = cart.map((item, i) => {
                 sum += item.price;
-                return `<div style="display:flex; gap:20px; padding:20px 0; border-bottom:1px solid #eee; align-items:center;">
-                    <img src="${item.img}" width="100">
-                    <div style="flex:1;"><h3>${item.name}</h3><button onclick="del(${i})" style="color:blue; border:none; background:none; cursor:pointer;">حذف</button></div>
+                return `
+                <div style="display:flex; gap:20px; padding:20px 0; border-bottom:1px solid #eee; align-items:center;">
+                    <img src="${item.img}" width="100" style="height:100px; object-fit:contain;">
+                    <div style="flex:1;">
+                        <h3 style="color:#007185;">${item.name}</h3>
+                        <button onclick="del(${i})" style="background:none; border:none; color:#007185; cursor:pointer; margin-top:10px;">حذف</button>
+                    </div>
                     <div style="font-weight:bold; font-size:20px;">${item.price} ريال</div>
                 </div>`;
             }).join('');
             document.getElementById('totalReal').innerText = sum.toLocaleString();
         }
+
         function del(i) {
             let cart = JSON.parse(localStorage.getItem('cart'));
             cart.splice(i, 1);
